@@ -17,7 +17,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class OtpView extends LinearLayout {
-  private EditText mOtpOneField, mOtpTwoField, mOtpThreeField, mOtpFourField, mCurrentlyFocusedEditText;
+  private EditText mOtpOneField, mOtpTwoField, mOtpThreeField, mOtpFourField,
+      mCurrentlyFocusedEditText;
 
   public OtpView(Context context) {
     super(context);
@@ -36,7 +37,8 @@ public class OtpView extends LinearLayout {
 
   private void init(AttributeSet attrs) {
     TypedArray styles = getContext().obtainStyledAttributes(attrs, R.styleable.OtpView);
-    LayoutInflater mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    LayoutInflater mInflater =
+        (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     mInflater.inflate(R.layout.otpview_layout, this);
     mOtpOneField = (EditText) findViewById(R.id.otp_one_edit_text);
     mOtpTwoField = (EditText) findViewById(R.id.otp_two_edit_text);
@@ -48,8 +50,10 @@ public class OtpView extends LinearLayout {
 
   private void styleEditTexts(TypedArray styles) {
     int textColor = styles.getColor(R.styleable.OtpView_android_textColor, Color.BLACK);
-    int backgroundColor = styles.getColor(R.styleable.OtpView_text_background_color, Color.TRANSPARENT);
-    if (styles.getColor(R.styleable.OtpView_text_background_color, Color.TRANSPARENT) != Color.TRANSPARENT) {
+    int backgroundColor =
+        styles.getColor(R.styleable.OtpView_text_background_color, Color.TRANSPARENT);
+    if (styles.getColor(R.styleable.OtpView_text_background_color, Color.TRANSPARENT)
+        != Color.TRANSPARENT) {
       mOtpOneField.setBackgroundColor(backgroundColor);
       mOtpTwoField.setBackgroundColor(backgroundColor);
       mOtpThreeField.setBackgroundColor(backgroundColor);
@@ -68,12 +72,13 @@ public class OtpView extends LinearLayout {
   }
 
   private void setEditTextInputStyle(TypedArray styles) {
-    int inputType = styles.getInt(R.styleable.OtpView_android_inputType, EditorInfo.TYPE_TEXT_VARIATION_NORMAL);
+    int inputType =
+        styles.getInt(R.styleable.OtpView_android_inputType, EditorInfo.TYPE_TEXT_VARIATION_NORMAL);
     mOtpOneField.setInputType(inputType);
     mOtpTwoField.setInputType(inputType);
     mOtpThreeField.setInputType(inputType);
     mOtpFourField.setInputType(inputType);
-    String text = String.valueOf(styles.getString(R.styleable.OtpView_otp));
+    String text = styles.getString(R.styleable.OtpView_otp);
     if (!TextUtils.isEmpty(text) && text.length() == 4) {
       mOtpOneField.setText(String.valueOf(text.charAt(0)));
       mOtpTwoField.setText(String.valueOf(text.charAt(1)));
@@ -95,18 +100,14 @@ public class OtpView extends LinearLayout {
     mOtpTwoField.setOnFocusChangeListener(onFocusChangeListener);
     mOtpThreeField.setOnFocusChangeListener(onFocusChangeListener);
     mOtpFourField.setOnFocusChangeListener(onFocusChangeListener);
-    if (mOtpFourField.getText().length() >= 1) {
-      mCurrentlyFocusedEditText = mOtpFourField;
-    } else {
-      mCurrentlyFocusedEditText = mOtpOneField;
-    }
   }
 
   public void disableKeypad() {
     OnTouchListener touchListener = new OnTouchListener() {
       @Override public boolean onTouch(View v, MotionEvent event) {
         v.onTouchEvent(event);
-        InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm =
+            (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
           imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
@@ -135,7 +136,7 @@ public class OtpView extends LinearLayout {
     return mCurrentlyFocusedEditText;
   }
 
-  public void setOnTextChangeListener() {
+  private void setOnTextChangeListener() {
     TextWatcher textWatcher = new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -145,10 +146,13 @@ public class OtpView extends LinearLayout {
       }
 
       @Override public void afterTextChanged(Editable s) {
-        if (mCurrentlyFocusedEditText.getText().length() >= 1 && mCurrentlyFocusedEditText != mOtpFourField) {
+        if (mCurrentlyFocusedEditText.getText().length() >= 1
+            && mCurrentlyFocusedEditText != mOtpFourField) {
           mCurrentlyFocusedEditText.focusSearch(View.FOCUS_RIGHT).requestFocus();
-        } else if (mCurrentlyFocusedEditText.getText().length() >= 1 && mCurrentlyFocusedEditText == mOtpFourField) {
-          InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        } else if (mCurrentlyFocusedEditText.getText().length() >= 1
+            && mCurrentlyFocusedEditText == mOtpFourField) {
+          InputMethodManager imm =
+              (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
           if (imm != null) {
             imm.hideSoftInputFromWindow(getWindowToken(), 0);
           }

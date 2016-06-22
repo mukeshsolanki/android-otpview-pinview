@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Otp-Pin-View.iml" filepath="$PROJECT_DIR$/Otp-Pin-View.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/otp-view.iml" filepath="$PROJECT_DIR$/otp-view.iml" />
       <module fileurl="file://$PROJECT_DIR$/otpview/otpview.iml" filepath="$PROJECT_DIR$/otpview/otpview.iml" />
     </modules>
   </component>

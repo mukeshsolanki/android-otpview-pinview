@@ -6,20 +6,37 @@ import android.view.View;
 import android.widget.Button;
 import com.mukesh.OtpView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+  private Button mDeleteButton, mDisableKeypadButton, mEnableKeypadButton;
+  private OtpView mOtpView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Button button = (Button) findViewById(R.id.delete);
-    final OtpView otpView = (OtpView) findViewById(R.id.otp_view);
-    assert otpView != null;
-    assert button != null;
-    otpView.disableKeypad();
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        otpView.enableKeypad();
-      }
-    });
+    initializeUi();
+    setListeners();
+  }
+
+  @Override public void onClick(View v) {
+    if (v == mDeleteButton) {
+      mOtpView.simulateDeletePress();
+    } else if (v == mDisableKeypadButton) {
+      mOtpView.disableKeypad();
+    } else if (v == mEnableKeypadButton) {
+      mOtpView.enableKeypad();
+    }
+  }
+
+  private void initializeUi() {
+    mDeleteButton = (Button) findViewById(R.id.delete);
+    mDisableKeypadButton = (Button) findViewById(R.id.disable_keypad);
+    mEnableKeypadButton = (Button) findViewById(R.id.enable_keypad);
+    mOtpView = (OtpView) findViewById(R.id.otp_view);
+  }
+
+  private void setListeners() {
+    mEnableKeypadButton.setOnClickListener(this);
+    mDisableKeypadButton.setOnClickListener(this);
+    mDeleteButton.setOnClickListener(this);
   }
 }
