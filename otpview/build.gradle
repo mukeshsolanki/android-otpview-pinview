@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 ext {
   bintrayRepo = 'maven'
-  bintrayName = 'otp-view'
+  bintrayName = 'otpview'
 
   publishedGroupId = 'com.mukesh'
   libraryName = 'otpview'
