@@ -1,3 +1,4 @@
+[ ![Download](https://api.bintray.com/packages/mukeshsolanki/maven/otpview/images/download.svg) ](https://bintray.com/mukeshsolanki/maven/otpview/_latestVersion)
 # Android PinView/ OtpView
 A custom control to enter a four digit code usually in cases of authentication.
 
