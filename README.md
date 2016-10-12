@@ -1,21 +1,35 @@
-[ ![Download](https://api.bintray.com/packages/mukeshsolanki/maven/otpview/images/download.svg) ](https://bintray.com/mukeshsolanki/maven/otpview/_latestVersion)
-[ ![PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg) ](https://www.paypal.me/mukeshsolanki)
-
-# Android PinView/ OtpView
-A custom control to enter a four digit code usually in cases of authentication.
+<h1 align="center">Android PinView/ OtpView</h1>
+<p align="center">
+  <a href="https://android-arsenal.com/api?level=11"> <img src="https://img.shields.io/badge/API-11%2B-blue.svg?style=flat" /></a>
+  <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
+  <a href="https://android-arsenal.com/details/1/3764"> <img src="https://img.shields.io/badge/Android%20Arsenal-Android%20PinView%20%2F%20OtpView-brightgreen.svg?style=flat" /></a>
+  <a href="https://travis-ci.org/mukeshsolanki/android-otpview-pinview"> <img src="https://travis-ci.org/mukeshsolanki/android-otpview-pinview.svg?branch=master" /></a>
+  <a href="https://www.paypal.me/mukeshsolanki"> <img src="https://img.shields.io/badge/paypal-donate-yellow.svg" /></a>
+  <br /><br />
+    A custom control to enter a four digit code usually in cases of authentication.
+</p>
 
 <img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/Screenshot_20160622-201727.png" width="500" height="839" />
 <br />
 <img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/Screenshot_20160622-201845.png" width="500" height="839" />
 
 ## How to integrate into your app?
+Integrating the project is simple a refined all you need to do is follow the below steps
 
-Integrating the library into you app is extremely easy. A few changes in the build gradle and your all ready to use otpview. Make the following changes to build.gradle inside you app.
+Step 1. Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories:
+
 ```java
-.....
+allprojects {
+  repositories {
+    ...
+    maven { url "https://jitpack.io" }
+  }
+}
+```
+Step 2. Add the dependency
+```java
 dependencies {
-  ...
-  compile 'com.mukesh:otpview:1.0.1'
+        compile 'com.github.mukeshsolanki:android-otpview-pinview:1.0.2'
 }
 ```
 

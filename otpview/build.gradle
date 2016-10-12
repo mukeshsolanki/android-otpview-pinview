@@ -1,28 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
-ext {
-  bintrayRepo = 'maven'
-  bintrayName = 'otpview'
-
-  publishedGroupId = 'com.mukesh'
-  libraryName = 'otpview'
-  artifact = 'otpview'
-
-  libraryDescription = 'A custom control to enter a four digit code usually in cases of authentication.'
-
-  siteUrl = 'https://github.com/mukeshsolanki/android-otpview-pinview'
-  gitUrl = 'https://github.com/mukeshsolanki/android-otpview-pinview'
-
-  libraryVersion = '1.0.1'
-
-  developerId = 'mukeshsolanki'
-  developerName = 'Mukesh Solanki'
-  developerEmail = 'themukeshsolanki@gmail.com'
-
-  licenseName = 'The Apache Software License, Version 2.0'
-  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-  allLicenses = ["Apache-2.0"]
-}
+group='com.github.mukeshsolanki'
 
 android {
   compileSdkVersion 24
@@ -31,8 +10,8 @@ android {
   defaultConfig {
     minSdkVersion 11
     targetSdkVersion 24
-    versionCode 2
-    versionName "1.0.1"
+    versionCode 3
+    versionName "1.0.2"
   }
   buildTypes {
     release {
@@ -44,8 +23,5 @@ android {
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:24.0.0'
+  compile 'com.android.support:appcompat-v7:24.2.1'
 }
-
-apply from: 'https://raw.githubusercontent.com/mukeshsolanki/library-distribution-tasks/master/install-task.gradle'
-apply from: 'https://raw.githubusercontent.com/mukeshsolanki/library-distribution-tasks/master/bintray-upload-tasks.gradle'

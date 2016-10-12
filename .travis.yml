@@ -1,0 +1,22 @@
+language: android
+jdk: oraclejdk8
+
+android:
+  components:
+    - platform-tools
+    - tools
+    - build-tools-24.0.3
+    - android-24
+    - extra-android-support
+    - extra-google-m2repository
+    - extra-android-m2repository
+  licenses:
+    - '.+'
+
+before_script:
+  - echo yes | android update sdk --no-ui --all --filter platform-tools,tools
+  - echo yes | android update sdk --no-ui --all --filter build-tools-24.0.3
+  - echo yes | android update sdk --no-ui --all --filter android-24
+
+script:
+    - ./gradlew clean test
