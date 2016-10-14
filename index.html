@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Android-otpview-pinview by mukeshsolanki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Android-otpview-pinview</h1>
+      <h2 class="project-tagline">A custom view to enter a four digit code usually in cases of authentication.</h2>
+      <a href="https://github.com/mukeshsolanki/android-otpview-pinview" class="btn">View on GitHub</a>
+      <a href="https://github.com/mukeshsolanki/android-otpview-pinview/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mukeshsolanki/android-otpview-pinview/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1 align="center">
+<a id="android-pinview-otpview" class="anchor" href="#android-pinview-otpview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Android PinView/ OtpView</h1>
+
+<p align="center">
+  <a href="https://android-arsenal.com/api?level=11"> <img src="https://img.shields.io/badge/API-11%2B-blue.svg?style=flat"></a>
+  <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg"></a>
+  <a href="https://android-arsenal.com/details/1/3764"> <img src="https://img.shields.io/badge/Android%20Arsenal-Android%20PinView%20%2F%20OtpView-brightgreen.svg?style=flat"></a>
+  <a href="https://travis-ci.org/mukeshsolanki/android-otpview-pinview"> <img src="https://travis-ci.org/mukeshsolanki/android-otpview-pinview.svg?branch=master"></a>
+  <a href="https://www.paypal.me/mukeshsolanki"> <img src="https://img.shields.io/badge/paypal-donate-yellow.svg"></a>
+  <br><br>
+    A custom control to enter a four digit code usually in cases of authentication.
+</p>
+
+<p><img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/Screenshot_20160622-201727.png" width="500" height="839">
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/Screenshot_20160622-201845.png" width="500" height="839"></p>
+
+<h2>
+<a id="how-to-integrate-into-your-app" class="anchor" href="#how-to-integrate-into-your-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to integrate into your app?</h2>
+
+<p>Integrating the project is simple a refined all you need to do is follow the below steps</p>
+
+<p>Step 1. Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories:</p>
+
+<div class="highlight highlight-source-java"><pre>allprojects {
+  repositories {
+    <span class="pl-c1">...</span>
+    maven { url <span class="pl-s"><span class="pl-pds">"</span>https://jitpack.io<span class="pl-pds">"</span></span> }
+  }
+}</pre></div>
+
+<p>Step 2. Add the dependency</p>
+
+<div class="highlight highlight-source-java"><pre>dependencies {
+        compile <span class="pl-s"><span class="pl-pds">'</span>com.github.mukeshsolanki:android-otpview-pinview:1.0.2<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h2>
+<a id="how-to-use-the-library" class="anchor" href="#how-to-use-the-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use the library?</h2>
+
+<p>Okay seems like you integrated the library in your project but <strong>how do you use it</strong>? Well its really easy just add the following to your xml design to show the otpview</p>
+
+<div class="highlight highlight-text-xml"><pre>.....
+&lt;<span class="pl-ent">com</span>.mukesh.OtpView
+      <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/otp_view<span class="pl-pds">"</span></span>
+      <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+      <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+      <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">background</span>=<span class="pl-s"><span class="pl-pds">"</span>#cccccc<span class="pl-pds">"</span></span>
+      <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">inputType</span>=<span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>
+      <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">textColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>
+      <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">otp</span>=<span class="pl-s"><span class="pl-pds">"</span>1234<span class="pl-pds">"</span></span>
+      <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">text_background_color</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/colorAccent<span class="pl-pds">"</span></span>
+      &gt;
+&lt;/<span class="pl-ent">com</span>.mukesh.OtpView&gt;
+.....</pre></div>
+
+<p>That's pretty much it and your all wrapped up.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mukeshsolanki/android-otpview-pinview">Android-otpview-pinview</a> is maintained by <a href="https://github.com/mukeshsolanki">mukeshsolanki</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
