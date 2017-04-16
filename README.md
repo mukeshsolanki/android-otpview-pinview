@@ -29,7 +29,7 @@ allprojects {
 Step 2. Add the dependency
 ```java
 dependencies {
-        compile 'com.github.mukeshsolanki:android-otpview-pinview:1.0.2'
+        compile 'com.github.mukeshsolanki:android-otpview-pinview:1.0.3'
 }
 ```
 
