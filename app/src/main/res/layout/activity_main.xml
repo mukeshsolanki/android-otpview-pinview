@@ -20,7 +20,6 @@
       android:background="#cccccc"
       android:inputType="number"
       android:textColor="#FFFFFF"
-      app:otp="1234"
       app:text_background_color="@color/colorAccent"
       >
     <requestFocus/>

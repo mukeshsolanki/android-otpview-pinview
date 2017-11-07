@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     setContentView(R.layout.activity_main);
     initializeUi();
     setListeners();
+    mOtpView.setOTP("1234");
   }
 
   @Override public void onClick(View v) {
