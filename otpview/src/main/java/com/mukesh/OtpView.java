@@ -22,7 +22,7 @@ public class OtpView extends LinearLayout {
     private EditText mOtpOneField, mOtpTwoField, mOtpThreeField, mOtpFourField,
             mCurrentlyFocusedEditText;
 
-    private OnOtpFinished onOtpFinished;
+    private OTPListener onOtpFinished;
 
     public OtpView(Context context) {
         super(context);
@@ -190,7 +190,7 @@ public class OtpView extends LinearLayout {
         mOtpFourField.setOnTouchListener(touchListener);
     }
 
-    public void setOnOtpFinished(OnOtpFinished onOtpFinished) {
+    public void setOnOtpFinished(OTPListener onOtpFinished) {
         this.onOtpFinished = onOtpFinished;
     }
 
