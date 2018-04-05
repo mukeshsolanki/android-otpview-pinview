@@ -5,14 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -42,61 +42,64 @@ public class OtpView extends LinearLayout {
     LayoutInflater mInflater =
         (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     mInflater.inflate(R.layout.otpview_layout, this);
-    mOtpOneField = (EditText) findViewById(R.id.otp_one_edit_text);
-    mOtpTwoField = (EditText) findViewById(R.id.otp_two_edit_text);
-    mOtpThreeField = (EditText) findViewById(R.id.otp_three_edit_text);
-    mOtpFourField = (EditText) findViewById(R.id.otp_four_edit_text);
+    mOtpOneField = findViewById(R.id.otp_one_edit_text);
+    mOtpTwoField = findViewById(R.id.otp_two_edit_text);
+    mOtpThreeField = findViewById(R.id.otp_three_edit_text);
+    mOtpFourField = findViewById(R.id.otp_four_edit_text);
     styleEditTexts(styles);
     styles.recycle();
   }
-  
+
   /**
-     * Get an instance of the present otp
-     */
-    private String makeOTP(){
-        StringBuilder stringBuilder=new StringBuilder();
-        stringBuilder.append(mOtpOneField.getText().toString());
-        stringBuilder.append(mOtpTwoField.getText().toString());
-        stringBuilder.append(mOtpThreeField.getText().toString());
-        stringBuilder.append(mOtpFourField.getText().toString());
-        return stringBuilder.toString();
-    }
+   * Get an instance of the present otp
+   */
+  private String makeOTP() {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(mOtpOneField.getText().toString());
+    stringBuilder.append(mOtpTwoField.getText().toString());
+    stringBuilder.append(mOtpThreeField.getText().toString());
+    stringBuilder.append(mOtpFourField.getText().toString());
+    return stringBuilder.toString();
+  }
 
-    /**
-     * Checks if all four fields have been filled
-     * @return length of OTP
-     */
-    public boolean hasValidOTP(){
-        return makeOTP().length()==4;
-    }
+  /**
+   * Checks if all four fields have been filled
+   *
+   * @return length of OTP
+   */
+  public boolean hasValidOTP() {
+    return makeOTP().length() == 4;
+  }
 
-    /**
-     * Returns the present otp entered by the user
-     * @return OTP
-     */
-    public String getOTP(){
-        return makeOTP();
-    }
+  /**
+   * Returns the present otp entered by the user
+   *
+   * @return OTP
+   */
+  public String getOTP() {
+    return makeOTP();
+  }
 
-    /**
-     * Used to set the OTP. More of cosmetic value than functional value
-     * @param otp Send the four digit otp
-     */
-    public void setOTP(String otp){
-        if(otp.length()!=4){
-            Log.e("OTPView","Invalid otp param");
-            return;
-        }
-        if(mOtpOneField.getInputType()== InputType.TYPE_CLASS_NUMBER
-                && !otp.matches("[0-9]+")){
-            Log.e("OTPView","OTP doesn't match INPUT TYPE");
-            return;
-        }
-        mOtpOneField.setText(String.valueOf(otp.charAt(0)));
-        mOtpTwoField.setText(String.valueOf(otp.charAt(1)));
-        mOtpThreeField.setText(String.valueOf(otp.charAt(2)));
-        mOtpFourField.setText(String.valueOf(otp.charAt(3)));
+  /**
+   * Used to set the OTP. More of cosmetic value than functional value
+   *
+   * @param otp Send the four digit otp
+   */
+  public void setOTP(String otp) {
+    if (otp.length() != 4) {
+      Log.e("OTPView", "Invalid otp param");
+      return;
     }
+    if (mOtpOneField.getInputType() == InputType.TYPE_CLASS_NUMBER
+        && !otp.matches("[0-9]+")) {
+      Log.e("OTPView", "OTP doesn't match INPUT TYPE");
+      return;
+    }
+    mOtpOneField.setText(String.valueOf(otp.charAt(0)));
+    mOtpTwoField.setText(String.valueOf(otp.charAt(1)));
+    mOtpThreeField.setText(String.valueOf(otp.charAt(2)));
+    mOtpFourField.setText(String.valueOf(otp.charAt(3)));
+  }
 
   private void styleEditTexts(TypedArray styles) {
     int textColor = styles.getColor(R.styleable.OtpView_android_textColor, Color.BLACK);
