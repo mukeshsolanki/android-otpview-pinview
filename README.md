@@ -29,7 +29,7 @@ allprojects {
 Step 2. Add the dependency
 ```java
 dependencies {
-        compile 'com.github.mukeshsolanki:android-otpview-pinview:<latest-version>'
+        implementation 'com.github.mukeshsolanki:android-otpview-pinview:<latest-version>'
 }
 ```
 
@@ -46,6 +46,7 @@ Okay seems like you integrated the library in your project but **how do you use 
       android:inputType="number"
       android:textColor="#FFFFFF"
       app:otp="1234"
+      app:length="4"
       app:text_background_color="@color/colorAccent"
       >
 </com.mukesh.OtpView>
