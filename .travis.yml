@@ -23,5 +23,5 @@ notifications:
       - support@madapps.in
     on_success: never
     on_failure: always
-    
+
   slack: madappstechnologies:0T1TW6lCma5wp1IPYn4hRp5H
