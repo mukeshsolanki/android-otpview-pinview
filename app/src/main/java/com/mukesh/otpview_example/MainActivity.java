@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     setContentView(R.layout.activity_main);
     initializeUi();
     setListeners();
-    mOtpView.setOTP("1234");
+    mOtpView.setOTP("123");
   }
 
   @Override public void onClick(View v) {
@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   }
 
   private void initializeUi() {
-    mDeleteButton = (Button) findViewById(R.id.delete);
-    mDisableKeypadButton = (Button) findViewById(R.id.disable_keypad);
-    mEnableKeypadButton = (Button) findViewById(R.id.enable_keypad);
-    mOtpView = (OtpView) findViewById(R.id.otp_view);
+    mDeleteButton = findViewById(R.id.delete);
+    mDisableKeypadButton = findViewById(R.id.disable_keypad);
+    mEnableKeypadButton = findViewById(R.id.enable_keypad);
+    mOtpView = findViewById(R.id.otp_view);
   }
 
   private void setListeners() {

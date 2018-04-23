@@ -1,25 +1,29 @@
 package com.mukesh;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.text.Editable;
-import android.text.TextUtils;
-import android.text.InputType;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class OtpView extends LinearLayout {
-    private EditText mOtpOneField, mOtpTwoField, mOtpThreeField, mOtpFourField,
+  private EditText mOtpOneField, mOtpTwoField, mOtpThreeField, mOtpFourField,
             mCurrentlyFocusedEditText;
 
     private OTPListener onOtpFinished;
