@@ -56,3 +56,29 @@ Okay seems like you integrated the library in your project but **how do you use 
 ```
 
 That's pretty much it and your all wrapped up.
+
+## Author
+Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
+
+## Contribution
+[![GitHub contributors](https://img.shields.io/github/contributors/mukeshsolanki/android-otpview-pinview.svg)](https://github.com/mukeshsolanki/android-otpview-pinview/graphs/contributors)
+
+* Bug reports and pull requests are welcome.
+* Make sure you use [square/java-code-styles](https://github.com/square/java-code-styles) to format your code.
+
+## License
+```
+Copyright 2018 Mukesh Solanki
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
