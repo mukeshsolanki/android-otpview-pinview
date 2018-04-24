@@ -39,3 +39,8 @@ captures/
 
 # Keystore files
 *.jks
+
+# IDEA config files
+.idea/
+
+**/.DS_Store
