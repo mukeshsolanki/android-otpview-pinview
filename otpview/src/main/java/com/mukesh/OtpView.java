@@ -44,10 +44,10 @@ public class OtpView extends LinearLayout {
         LayoutInflater mInflater =
                 (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mInflater.inflate(R.layout.otpview_layout, this);
-        mOtpOneField = (EditText) findViewById(R.id.otp_one_edit_text);
-        mOtpTwoField = (EditText) findViewById(R.id.otp_two_edit_text);
-        mOtpThreeField = (EditText) findViewById(R.id.otp_three_edit_text);
-        mOtpFourField = (EditText) findViewById(R.id.otp_four_edit_text);
+        mOtpOneField = findViewById(R.id.otp_one_edit_text);
+        mOtpTwoField = findViewById(R.id.otp_two_edit_text);
+        mOtpThreeField = findViewById(R.id.otp_three_edit_text);
+        mOtpFourField = findViewById(R.id.otp_four_edit_text);
         styleEditTexts(styles);
         styles.recycle();
     }
