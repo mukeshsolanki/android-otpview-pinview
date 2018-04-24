@@ -1,9 +1,11 @@
 <h1 align="center">Android PinView/ OtpView</h1>
 <p align="center">
+  <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"><img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview/month.svg"/></a>
   <a href="https://android-arsenal.com/api?level=11"> <img src="https://img.shields.io/badge/API-14%2B-blue.svg?style=flat" /></a>
   <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
   <a href="https://android-arsenal.com/details/1/3764"> <img src="https://img.shields.io/badge/Android%20Arsenal-Android%20PinView%20%2F%20OtpView-brightgreen.svg?style=flat" /></a>
   <a href="https://travis-ci.org/mukeshsolanki/android-otpview-pinview"> <img src="https://travis-ci.org/mukeshsolanki/android-otpview-pinview.svg?branch=master" /></a>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
   <a href="https://www.paypal.me/mukeshsolanki"> <img src="https://img.shields.io/badge/paypal-donate-yellow.svg" /></a>
   <br /><br />
     A custom control to enter a four digit code usually in cases of authentication.
@@ -29,7 +31,7 @@ allprojects {
 Step 2. Add the dependency
 ```java
 dependencies {
-        compile 'com.github.mukeshsolanki:android-otpview-pinview:<latest-version>'
+        implementation 'com.github.mukeshsolanki:android-otpview-pinview:<latest-version>'
 }
 ```
 
@@ -46,6 +48,7 @@ Okay seems like you integrated the library in your project but **how do you use 
       android:inputType="number"
       android:textColor="#FFFFFF"
       app:otp="1234"
+      app:length="4"
       app:text_background_color="@color/colorAccent"
       >
 </com.mukesh.OtpView>
@@ -53,3 +56,29 @@ Okay seems like you integrated the library in your project but **how do you use 
 ```
 
 That's pretty much it and your all wrapped up.
+
+## Author
+Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
+
+## Contribution
+[![GitHub contributors](https://img.shields.io/github/contributors/mukeshsolanki/android-otpview-pinview.svg)](https://github.com/mukeshsolanki/android-otpview-pinview/graphs/contributors)
+
+* Bug reports and pull requests are welcome.
+* Make sure you use [square/java-code-styles](https://github.com/square/java-code-styles) to format your code.
+
+## License
+```
+Copyright 2018 Mukesh Solanki
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

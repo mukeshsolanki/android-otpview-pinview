@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion 27
-  buildToolsVersion '27.0.0'
 
   defaultConfig {
     applicationId "com.mukesh.otpview_example"
@@ -20,7 +19,7 @@ android {
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:27.0.0'
-  compile project(':otpview')
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation 'com.android.support:appcompat-v7:27.1.0'
+  implementation project(':otpview')
 }

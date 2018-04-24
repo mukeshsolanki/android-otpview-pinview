@@ -1,9 +1,10 @@
 <resources>
 
   <declare-styleable name="OtpView">
-    <attr name="android:inputType" />
-    <attr name="android:textColor" />
-    <attr name="text_background_color" format="color" />
-    <attr name="otp" format="string"/>
+    <attr name="android:inputType"/>
+    <attr name="android:textColor"/>
+    <attr format="color" name="text_background_color"/>
+    <attr format="string" name="otp"/>
+    <attr format="integer" name="length"/>
   </declare-styleable>
 </resources>
