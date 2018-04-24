@@ -41,3 +41,5 @@ captures/
 
 # IDEA config files
 .idea/
+
+**/.DS_Store
