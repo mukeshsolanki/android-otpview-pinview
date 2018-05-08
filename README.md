@@ -49,6 +49,8 @@ Okay seems like you integrated the library in your project but **how do you use 
       android:textColor="#FFFFFF"
       app:otp="1234"
       app:length="4"
+      app:hint="*"
+      app:hint_color="@color/colorAccent"
       app:text_background_color="@color/colorAccent"
       >
 </com.mukesh.OtpView>
