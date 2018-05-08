@@ -26,6 +26,7 @@ public class OtpView extends LinearLayout {
   private EditText currentlyFocusedEditText;
   private List<EditText> editTexts = new ArrayList<>();
   private int length;
+  private OtpListener otpListener;
 
   public OtpView(Context context) {
     super(context);
@@ -75,6 +76,13 @@ public class OtpView extends LinearLayout {
    */
   public String getOTP() {
     return makeOTP();
+  }
+
+  /**
+   * Sets the listener that will be used to call onOtpEntered when the user has completed entering the otp
+   */
+  public void setListener(OtpListener otpListener) {
+    this.otpListener = otpListener;
   }
 
   /**
@@ -209,10 +217,10 @@ public class OtpView extends LinearLayout {
       }
 
       @Override public void afterTextChanged(Editable s) {
-        int length = currentlyFocusedEditText.getText().length();
+        int editTextLength = currentlyFocusedEditText.getText().length();
         InputMethodManager imm =
             (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (length == 0) {
+        if (editTextLength == 0) {
           if (currentlyFocusedEditText == editTexts.get(0)) {
             if (imm != null) {
               imm.hideSoftInputFromWindow(getWindowToken(), 0);
@@ -222,7 +230,7 @@ public class OtpView extends LinearLayout {
               currentlyFocusedEditText.focusSearch(View.FOCUS_LEFT).requestFocus();
             }
           }
-        } else if (length == 1) {
+        } else if (editTextLength == 1) {
           if (currentlyFocusedEditText == editTexts.get(editTexts.size() - 1)) {
             if (imm != null) {
               imm.hideSoftInputFromWindow(getWindowToken(), 0);
@@ -232,6 +240,9 @@ public class OtpView extends LinearLayout {
               currentlyFocusedEditText.focusSearch(View.FOCUS_RIGHT).requestFocus();
             }
           }
+        }
+        if (otpListener != null && getOTP().length() == length) {
+          otpListener.onOtpEntered(getOTP());
         }
       }
     };
