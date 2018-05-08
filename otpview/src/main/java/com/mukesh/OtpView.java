@@ -113,11 +113,22 @@ public class OtpView extends LinearLayout {
 
   private void generateViews(TypedArray styles) {
     if (length > 0) {
-      float width = styles.getDimension(R.styleable.OtpView_width, getPixels(48));
-      float height = styles.getDimension(R.styleable.OtpView_height, getPixels(48));
+      int width = (int) styles.getDimension(R.styleable.OtpView_width, getPixels(48));
+      int height = (int) styles.getDimension(R.styleable.OtpView_height, getPixels(48));
+      int space = (int) styles.getDimension(R.styleable.OtpView_space, getPixels(0));
+      int spaceLeft = (int) styles.getDimension(R.styleable.OtpView_space_left, getPixels(4));
+      int spaceRight = (int) styles.getDimension(R.styleable.OtpView_space_right, getPixels(4));
+      int spaceTop = (int) styles.getDimension(R.styleable.OtpView_space_top, getPixels(4));
+      int spaceBottom = (int) styles.getDimension(R.styleable.OtpView_space_bottom, getPixels(4));
       LinearLayout.LayoutParams params =
           new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-      params.setMargins(getPixels(16), getPixels(16), getPixels(16), getPixels(16));
+      if (space > 0) {
+        int spaceInPx = getPixels(space);
+        params.setMargins(spaceInPx, spaceInPx, spaceInPx, spaceInPx);
+      } else {
+        params.setMargins(getPixels(spaceLeft), getPixels(spaceRight), getPixels(spaceTop),
+            getPixels(spaceBottom));
+      }
       InputFilter[] filter = new InputFilter[] { getFilter(), new InputFilter.LengthFilter(1) };
       int textColor = styles.getColor(R.styleable.OtpView_android_textColor, Color.BLACK);
       int backgroundColor =
@@ -131,8 +142,8 @@ public class OtpView extends LinearLayout {
         EditText editText = new EditText(getContext());
         editText.setId(i);
         editText.setSingleLine();
-        editText.setWidth((int) width);
-        editText.setHeight((int) height);
+        editText.setWidth(width);
+        editText.setHeight(height);
         editText.setGravity(Gravity.CENTER_HORIZONTAL);
         editText.setMaxLines(1);
         editText.setFilters(filter);
