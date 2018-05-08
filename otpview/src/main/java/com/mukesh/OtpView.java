@@ -12,6 +12,7 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -92,14 +93,16 @@ public class OtpView extends LinearLayout {
    * @param otp Send the four digit otp
    */
   public void setOTP(String otp) {
-    if (otp.length() != length) {
-      throw new IllegalArgumentException("Otp Size is different from the OtpView size");
-    } else {
-      for (int i = 0; i < editTexts.size(); i++) {
-        editTexts.get(i).setText(String.valueOf(otp.charAt(i)));
+    if (otp != null) {
+      if (otp.length() != length) {
+        throw new IllegalArgumentException("Otp Size is different from the OtpView size");
+      } else {
+        for (int i = 0; i < editTexts.size(); i++) {
+          editTexts.get(i).setText(String.valueOf(otp.charAt(i)));
+        }
+        currentlyFocusedEditText = editTexts.get(length - 1);
+        currentlyFocusedEditText.requestFocus();
       }
-      currentlyFocusedEditText = editTexts.get(length - 1);
-      currentlyFocusedEditText.requestFocus();
     }
   }
 
@@ -110,9 +113,22 @@ public class OtpView extends LinearLayout {
 
   private void generateViews(TypedArray styles) {
     if (length > 0) {
+      int width = (int) styles.getDimension(R.styleable.OtpView_width, getPixels(48));
+      int height = (int) styles.getDimension(R.styleable.OtpView_height, getPixels(48));
+      int space = (int) styles.getDimension(R.styleable.OtpView_space, getPixels(0));
+      int spaceLeft = (int) styles.getDimension(R.styleable.OtpView_space_left, getPixels(4));
+      int spaceRight = (int) styles.getDimension(R.styleable.OtpView_space_right, getPixels(4));
+      int spaceTop = (int) styles.getDimension(R.styleable.OtpView_space_top, getPixels(4));
+      int spaceBottom = (int) styles.getDimension(R.styleable.OtpView_space_bottom, getPixels(4));
       LinearLayout.LayoutParams params =
           new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-      params.setMargins(getPixels(16), getPixels(16), getPixels(16), getPixels(16));
+      if (space > 0) {
+        int spaceInPx = getPixels(space);
+        params.setMargins(spaceInPx, spaceInPx, spaceInPx, spaceInPx);
+      } else {
+        params.setMargins(getPixels(spaceLeft), getPixels(spaceRight), getPixels(spaceTop),
+            getPixels(spaceBottom));
+      }
       InputFilter[] filter = new InputFilter[] { getFilter(), new InputFilter.LengthFilter(1) };
       int textColor = styles.getColor(R.styleable.OtpView_android_textColor, Color.BLACK);
       int backgroundColor =
@@ -126,6 +142,9 @@ public class OtpView extends LinearLayout {
         EditText editText = new EditText(getContext());
         editText.setId(i);
         editText.setSingleLine();
+        editText.setWidth(width);
+        editText.setHeight(height);
+        editText.setGravity(Gravity.CENTER_HORIZONTAL);
         editText.setMaxLines(1);
         editText.setFilters(filter);
         editText.setLayoutParams(params);

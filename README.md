@@ -49,8 +49,6 @@ Okay seems like you integrated the library in your project but **how do you use 
       android:textColor="#FFFFFF"
       app:otp="1234"
       app:length="4"
-      app:hint="*"
-      app:hint_color="@color/colorAccent"
       app:text_background_color="@color/colorAccent"
       >
 </com.mukesh.OtpView>
@@ -72,6 +70,25 @@ To get a callback when the user enters the otp make use of `OtpListener` like wi
 ```
 
 That's pretty much it and your all wrapped up.
+
+## OtpView Attributes
+| Attribute | Use |
+| ----------| --- |
+| android:background | sets the background color for the otp view |
+| android:inputType | sets the input type for otp view, can be `text` `password` `number` |
+| android:textColor | sets the text color of the edittext inside the otp view |
+| app:text_background_color | sets the background color of the edittext |
+| app:otp | prefills the otp in the view when loaded |
+| app:length | sets the lenght of the otp |
+| app:width | sets the width of the edittext inside otp view |
+| app:height | sets the height of the edittext inside otp view |
+| app:space | adds space on all the sides of the edittexts |
+| app:space_left | adds  space to the left of the edittexts |
+| app:space_right | adds space to the right of the edittexts |
+| app:space_top | adds space to the top of the edittexts |
+| app:space_bottom | adds space to the bottom of the edittexts |
+| app:hint_color | sets the color for hint in the edittexts |
+| app:hint | sets the character for hint in the edittexts |
 
 ## Author
 Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
