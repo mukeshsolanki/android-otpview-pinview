@@ -27,6 +27,7 @@ public class OtpView extends LinearLayout {
   private List<EditText> editTexts = new ArrayList<>();
   private int length;
   private OtpListener otpListener;
+  private String stylesOtp;
 
   public OtpView(Context context) {
     super(context);
@@ -109,32 +110,41 @@ public class OtpView extends LinearLayout {
 
   private void generateViews(TypedArray styles) {
     if (length > 0) {
+      LinearLayout.LayoutParams params =
+          new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+      params.setMargins(getPixels(16), getPixels(16), getPixels(16), getPixels(16));
+      InputFilter[] filter = new InputFilter[] { getFilter(), new InputFilter.LengthFilter(1) };
+      int textColor = styles.getColor(R.styleable.OtpView_android_textColor, Color.BLACK);
+      int backgroundColor =
+          styles.getColor(R.styleable.OtpView_text_background_color, Color.TRANSPARENT);
+      int inputType = styles.getInt(R.styleable.OtpView_android_inputType,
+          EditorInfo.TYPE_TEXT_VARIATION_NORMAL);
+      int hintColor = styles.getColor(R.styleable.OtpView_hint_color, Color.GRAY);
+      String hint = styles.getString(R.styleable.OtpView_hint);
+      stylesOtp = styles.getString(R.styleable.OtpView_otp);
       for (int i = 0; i < length; i++) {
         EditText editText = new EditText(getContext());
         editText.setId(i);
         editText.setSingleLine();
         editText.setMaxLines(1);
-        editText.setFilters((new InputFilter[] { getFilter(), new InputFilter.LengthFilter(1) }));
-        LinearLayout.LayoutParams params =
-            new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        params.setMargins(getPixels(16), getPixels(16), getPixels(16), getPixels(16));
+        editText.setFilters(filter);
         editText.setLayoutParams(params);
-        int textColor = styles.getColor(R.styleable.OtpView_android_textColor, Color.BLACK);
-        int backgroundColor =
-            styles.getColor(R.styleable.OtpView_text_background_color, Color.TRANSPARENT);
         if (backgroundColor != Color.TRANSPARENT) {
           editText.setBackgroundColor(backgroundColor);
         } else {
           editText.getBackground().mutate().setColorFilter(textColor, PorterDuff.Mode.SRC_ATOP);
         }
+        editText.setHintTextColor(hintColor);
+        editText.setHint(hint);
         editText.setTextColor(textColor);
-        editText.setInputType(styles.getInt(R.styleable.OtpView_android_inputType,
-            EditorInfo.TYPE_TEXT_VARIATION_NORMAL));
+        editText.setInputType(inputType);
         setFocusListener(editText);
         setOnTextChangeListener(editText);
         addView(editText, i);
         editTexts.add(editText);
       }
+      currentlyFocusedEditText = editTexts.get(0);
+      setOTP(stylesOtp);
     } else {
       throw new IllegalStateException("Please specify the length of the otp view");
     }
@@ -217,7 +227,7 @@ public class OtpView extends LinearLayout {
       }
 
       @Override public void afterTextChanged(Editable s) {
-        int editTextLength = currentlyFocusedEditText.getText().length();
+        int editTextLength = currentlyFocusedEditText.getText().toString().length();
         InputMethodManager imm =
             (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (editTextLength == 0) {
