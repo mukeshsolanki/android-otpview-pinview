@@ -55,6 +55,20 @@ Okay seems like you integrated the library in your project but **how do you use 
 .....
 ```
 
+To get a callback when the user enters the otp make use of `OtpListener` like wise
+
+```java
+ private OtpView otpView;
+ otpView = findViewById(R.id.otp_view);
+ otpView.setListener(new OtpListener() {
+   @Override public void onOtpEntered(String otp) {
+
+     // do Stuff
+     Log.d("onOtpEntered=>", otp);
+   }
+ });
+```
+
 That's pretty much it and your all wrapped up.
 
 ## Author
