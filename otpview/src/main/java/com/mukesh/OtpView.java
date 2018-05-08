@@ -12,6 +12,7 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -92,14 +93,16 @@ public class OtpView extends LinearLayout {
    * @param otp Send the four digit otp
    */
   public void setOTP(String otp) {
-    if (otp.length() != length) {
-      throw new IllegalArgumentException("Otp Size is different from the OtpView size");
-    } else {
-      for (int i = 0; i < editTexts.size(); i++) {
-        editTexts.get(i).setText(String.valueOf(otp.charAt(i)));
+    if (otp != null) {
+      if (otp.length() != length) {
+        throw new IllegalArgumentException("Otp Size is different from the OtpView size");
+      } else {
+        for (int i = 0; i < editTexts.size(); i++) {
+          editTexts.get(i).setText(String.valueOf(otp.charAt(i)));
+        }
+        currentlyFocusedEditText = editTexts.get(length - 1);
+        currentlyFocusedEditText.requestFocus();
       }
-      currentlyFocusedEditText = editTexts.get(length - 1);
-      currentlyFocusedEditText.requestFocus();
     }
   }
 
@@ -110,6 +113,8 @@ public class OtpView extends LinearLayout {
 
   private void generateViews(TypedArray styles) {
     if (length > 0) {
+      float width = styles.getDimension(R.styleable.OtpView_width, getPixels(48));
+      float height = styles.getDimension(R.styleable.OtpView_height, getPixels(48));
       LinearLayout.LayoutParams params =
           new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
       params.setMargins(getPixels(16), getPixels(16), getPixels(16), getPixels(16));
@@ -126,6 +131,9 @@ public class OtpView extends LinearLayout {
         EditText editText = new EditText(getContext());
         editText.setId(i);
         editText.setSingleLine();
+        editText.setWidth((int) width);
+        editText.setHeight((int) height);
+        editText.setGravity(Gravity.CENTER_HORIZONTAL);
         editText.setMaxLines(1);
         editText.setFilters(filter);
         editText.setLayoutParams(params);

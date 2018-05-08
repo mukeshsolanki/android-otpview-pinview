@@ -21,7 +21,6 @@
       app:hint="*"
       app:hint_color="@color/colorAccent"
       app:length="3"
-      app:otp="123"
       >
     <requestFocus/>
   </com.mukesh.OtpView>

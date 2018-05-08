@@ -5,7 +5,7 @@ android {
 
   defaultConfig {
     applicationId "com.mukesh.otpview_example"
-    minSdkVersion 14
+    minSdkVersion 17
     targetSdkVersion 27
     versionCode 1
     versionName "1.0"
