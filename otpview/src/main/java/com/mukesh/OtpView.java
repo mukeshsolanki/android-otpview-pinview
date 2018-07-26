@@ -121,7 +121,7 @@ public class OtpView extends LinearLayout {
       int spaceTop = (int) styles.getDimension(R.styleable.OtpView_space_top, getPixels(4));
       int spaceBottom = (int) styles.getDimension(R.styleable.OtpView_space_bottom, getPixels(4));
       LinearLayout.LayoutParams params =
-          new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+          new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f);
       if (space > 0) {
         int spaceInPx = getPixels(space);
         params.setMargins(spaceInPx, spaceInPx, spaceInPx, spaceInPx);
@@ -146,6 +146,7 @@ public class OtpView extends LinearLayout {
         editText.setHeight(height);
         editText.setGravity(Gravity.CENTER_HORIZONTAL);
         editText.setMaxLines(1);
+        editText.setTextSize(20.0f);
         editText.setFilters(filter);
         editText.setLayoutParams(params);
         if (backgroundColor != Color.TRANSPARENT) {
