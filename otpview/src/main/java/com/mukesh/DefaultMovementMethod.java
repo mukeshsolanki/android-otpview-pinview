@@ -33,7 +33,7 @@ class DefaultMovementMethod implements MovementMethod {
 
   private static DefaultMovementMethod sInstance;
 
-  static MovementMethod getInstance() {
+  public static MovementMethod getInstance() {
     if (sInstance == null) {
       sInstance = new DefaultMovementMethod();
     }
@@ -66,7 +66,7 @@ class DefaultMovementMethod implements MovementMethod {
 
   @Override
   public void onTakeFocus(TextView widget, Spannable text, int direction) {
-
+    //Intentionally Empty
   }
 
   @Override

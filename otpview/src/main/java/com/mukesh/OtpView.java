@@ -363,7 +363,8 @@ public class OtpView extends AppCompatEditText {
     if (hideLineWhenFilled && i < getText().length()) {
       return;
     }
-    boolean drawLeft, drawRight;
+    boolean drawLeft;
+    boolean drawRight;
     drawLeft = drawRight = true;
     if (otpViewItemSpacing == 0 && otpViewItemCount > 1) {
       if (i == 0) {
@@ -578,7 +579,7 @@ public class OtpView extends AppCompatEditText {
    */
   public void setLineColor(ColorStateList colors) {
     if (colors == null) {
-      throw new NullPointerException();
+      throw new IllegalArgumentException("Color cannot be null");
     }
 
     lineColor = colors;
@@ -875,13 +876,10 @@ public class OtpView extends AppCompatEditText {
   @Override
   public void onScreenStateChanged(int screenState) {
     super.onScreenStateChanged(screenState);
-    switch (screenState) {
-      case View.SCREEN_STATE_ON:
-        resumeBlink();
-        break;
-      case View.SCREEN_STATE_OFF:
-        suspendBlink();
-        break;
+    if (screenState == View.SCREEN_STATE_ON) {
+      resumeBlink();
+    } else if (screenState == View.SCREEN_STATE_OFF) {
+      suspendBlink();
     }
   }
 
@@ -925,7 +923,7 @@ public class OtpView extends AppCompatEditText {
 
   private void resumeBlink() {
     if (blink != null) {
-      blink.uncancel();
+      blink.unCancel();
       makeBlink();
     }
   }
@@ -944,11 +942,11 @@ public class OtpView extends AppCompatEditText {
   }
 
   private class Blink implements Runnable {
-    private boolean mCancelled;
+    private boolean cancelled;
 
     @Override
     public void run() {
-      if (mCancelled) {
+      if (cancelled) {
         return;
       }
 
@@ -961,14 +959,14 @@ public class OtpView extends AppCompatEditText {
     }
 
     private void cancel() {
-      if (!mCancelled) {
+      if (!cancelled) {
         removeCallbacks(this);
-        mCancelled = true;
+        cancelled = true;
       }
     }
 
-    void uncancel() {
-      mCancelled = false;
+    private void unCancel() {
+      cancelled = false;
     }
   }
   //endregion
