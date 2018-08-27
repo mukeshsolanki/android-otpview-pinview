@@ -94,6 +94,7 @@ That's pretty much it and your all wrapped up.
 Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
 
 ## Contribution
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9251d0eef1d64538aa2599a26e6db8f8)](https://app.codacy.com/app/mukesh_2/android-otpview-pinview?utm_source=github.com&utm_medium=referral&utm_content=mukeshsolanki/android-otpview-pinview&utm_campaign=Badge_Grade_Dashboard)
 [![GitHub contributors](https://img.shields.io/github/contributors/mukeshsolanki/android-otpview-pinview.svg)](https://github.com/mukeshsolanki/android-otpview-pinview/graphs/contributors)
 
 * Bug reports and pull requests are welcome.
