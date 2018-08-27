@@ -4,8 +4,8 @@ android:
   components:
   - platform-tools
   - tools
-  - build-tools-27.1.0
-  - android-27
+  - build-tools-28.0.0
+  - android-28
   - extra-android-support
   - extra-google-m2repository
   - extra-android-m2repository
@@ -13,8 +13,8 @@ android:
   - ".+"
 before_script:
 - echo yes | android update sdk --no-ui --all --filter platform-tools,tools
-- echo yes | android update sdk --no-ui --all --filter build-tools-27.0.3
-- echo yes | android update sdk --no-ui --all --filter android-27
+- echo yes | android update sdk --no-ui --all --filter build-tools-28.0.0
+- echo yes | android update sdk --no-ui --all --filter android-28
 script:
 - "./gradlew clean test"
 notifications:
