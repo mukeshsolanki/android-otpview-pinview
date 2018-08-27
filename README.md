@@ -1,8 +1,8 @@
 <h1 align="center">Android PinView/ OtpView</h1>
 <p align="center">
   <a href="https://app.codacy.com/app/mukesh_2/android-otpview-pinview?utm_source=github.com&utm_medium=referral&utm_content=mukeshsolanki/android-otpview-pinview&utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/9251d0eef1d64538aa2599a26e6db8f8"></a>
-  <a href="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
-  <a href="https://travis-ci.org/mukeshsolanki/android-otpview-pinview"> <img src="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master.svg?style=svg" /></a>
+  <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
+  <a href="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master.svg?style=shield" /></a>
   <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
   <a href="https://www.paypal.me/mukeshsolanki"> <img src="https://img.shields.io/badge/paypal-donate-yellow.svg" /></a>
   <br /><br />
