@@ -18,7 +18,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="72dp"
       android:padding="16dp"
-      android:text="Verification Code"
+      android:text="@string/verification_code"
       android:textColor="@android:color/white"
       android:textSize="16sp"
       android:textStyle="bold"
@@ -26,7 +26,7 @@
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Please type the verification code sent to\n+xxxxxxxxxx"
+      android:text="@string/verification_code_subtext"
       android:textAlignment="center"
       android:textColor="@android:color/white"
       />
@@ -42,7 +42,7 @@
       android:textColor="@android:color/white"
       app:itemCount="6"
       app:lineColor="@color/colorPrimary"
-      app:viewType="none"
+      app:viewType="line"
       />
 
   <Button
@@ -50,7 +50,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="72dp"
-      android:text="Validate"
+      android:text="@string/validate"
       android:textColor="@android:color/white"
       style="?android:attr/borderlessButtonStyle"
       />

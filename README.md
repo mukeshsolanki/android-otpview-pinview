@@ -9,9 +9,9 @@
     A custom control to enter a four digit code usually in cases of authentication.
 </p>
 
-<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/Screenshot_20160622-201727.png" width="500" height="839" />
-<br />
-<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/Screenshot_20160622-201845.png" width="500" height="839" />
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss1.png" width="270" height="480" /> &nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss2.png" width="270" height="480" /> &nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss3.png" width="270" height="480" /> &nbsp;&nbsp;
 
 ## How to integrate into your app?
 Integrating the project is simple a refined all you need to do is follow the below steps
@@ -38,31 +38,31 @@ Okay seems like you integrated the library in your project but **how do you use 
 
 ```xml
 .....
-<com.mukesh.OtpView
+ <com.mukesh.OtpView
       android:id="@+id/otp_view"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:background="#cccccc"
+      android:layout_marginTop="72dp"
       android:inputType="number"
-      android:textColor="#FFFFFF"
-      app:otp="1234"
-      app:length="4"
-      app:text_background_color="@color/colorAccent"
-      >
-</com.mukesh.OtpView>
+      android:itemBackground="@color/colorPrimary"
+      android:textColor="@android:color/white"
+      app:itemCount="6"
+      app:lineColor="@color/colorPrimary"
+      app:viewType="line"
+      />
 .....
 ```
 
-To get a callback when the user enters the otp make use of `OtpListener` like wise
+To get a callback when the user enters the otp make use of `OnOtpCompletionListener` like wise
 
 ```java
  private OtpView otpView;
  otpView = findViewById(R.id.otp_view);
- otpView.setListener(new OtpListener() {
-   @Override public void onOtpEntered(String otp) {
+ otpView.setListener(new OnOtpCompletionListener() {
+   @Override public void onOtpCompleted(String otp) {
 
      // do Stuff
-     Log.d("onOtpEntered=>", otp);
+     Log.d("onOtpCompleted=>", otp);
    }
  });
 ```
@@ -72,21 +72,20 @@ That's pretty much it and your all wrapped up.
 ## OtpView Attributes
 | Attribute | Use |
 | ----------| --- |
-| android:background | sets the background color for the otp view |
-| android:inputType | sets the input type for otp view, can be `text` `password` `number` |
-| android:textColor | sets the text color of the edittext inside the otp view |
-| app:text_background_color | sets the background color of the edittext |
-| app:otp | prefills the otp in the view when loaded |
-| app:length | sets the lenght of the otp |
-| app:width | sets the width of the edittext inside otp view |
-| app:height | sets the height of the edittext inside otp view |
-| app:space | adds space on all the sides of the edittexts |
-| app:space_left | adds  space to the left of the edittexts |
-| app:space_right | adds space to the right of the edittexts |
-| app:space_top | adds space to the top of the edittexts |
-| app:space_bottom | adds space to the bottom of the edittexts |
-| app:hint_color | sets the color for hint in the edittexts |
-| app:hint | sets the character for hint in the edittexts |
+| app:itemCount | sets the length of the otp view |
+| app:itemWidth | sets the with of each item inside the otp view |
+| app:itemHeight | sets the height of each item inside the otp view |
+| app:itemSpacing | sets the space between each item in otp view |
+| app:lineWidth | sets the line border width |
+| app:lineColor | sets the color to the line border |
+| app:viewType | sets the view type of the otp view it can be either `rectangle` `line` or `none` |
+| app:cursorVisible | sets the visibility of the cursor |
+| app:cursorColor | sets the color of the cursor |
+| app:cursorWidth | sets width of the cursor |
+| app:itemBackground | sets the background color of each item in the otp view |
+| app:hideLineWhenFilled | toggles the line border |
+
+Apart from these you can use any property that applies to an `EditText`.
 
 ## Author
 Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
