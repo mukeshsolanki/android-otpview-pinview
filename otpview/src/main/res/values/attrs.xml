@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2018 Mukesh Solanki
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+  <declare-styleable name="OtpViewTheme">
+    <attr format="reference" name="otpViewStyle"/>
+  </declare-styleable>
+
+  <declare-styleable name="OtpView">
+    <attr format="integer" name="itemCount"/>
+    <attr format="dimension" name="itemWidth"/>
+    <attr format="dimension" name="itemHeight"/>
+    <attr format="dimension" name="itemRadius"/>
+    <attr format="dimension" name="itemSpacing"/>
+    <attr format="dimension" name="lineWidth"/>
+    <attr format="reference|color" name="lineColor"/>
+    <attr format="enum" name="viewType">
+      <enum name="rectangle" value="0"/>
+      <enum name="line" value="1"/>
+      <enum name="none" value="2"/>
+    </attr>
+    <attr name="android:cursorVisible"/>
+    <attr format="dimension" name="cursorWidth"/>
+    <attr format="reference|color" name="cursorColor"/>
+    <attr name="android:itemBackground"/>
+    <attr format="boolean" name="hideLineWhenFilled"/>
+  </declare-styleable>
+</resources>

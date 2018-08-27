@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -12,32 +13,45 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mukesh.otpview_example.MainActivity"
     >
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="72dp"
+      android:padding="16dp"
+      android:text="@string/verification_code"
+      android:textColor="@android:color/white"
+      android:textSize="16sp"
+      android:textStyle="bold"
+      />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/verification_code_subtext"
+      android:textAlignment="center"
+      android:textColor="@android:color/white"
+      />
+
 
   <com.mukesh.OtpView
       android:id="@+id/otp_view"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="72dp"
       android:inputType="number"
-      app:length="3"
-      >
-    <requestFocus/>
-  </com.mukesh.OtpView>
-  <Button
-      android:id="@+id/delete"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="delete"
+      android:itemBackground="@color/colorPrimary"
+      android:textColor="@android:color/white"
+      app:itemCount="6"
+      app:lineColor="@color/colorPrimary"
+      app:viewType="line"
       />
+
   <Button
-      android:id="@+id/disable_keypad"
+      android:id="@+id/validate_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Disable Keypad"
-      />
-  <Button
-      android:id="@+id/enable_keypad"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Enable Keypad"
+      android:layout_marginTop="72dp"
+      android:text="@string/validate"
+      android:textColor="@android:color/white"
+      style="?android:attr/borderlessButtonStyle"
       />
 </LinearLayout>

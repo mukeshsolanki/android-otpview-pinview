@@ -2,14 +2,15 @@ package com.mukesh.otpview_example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import com.mukesh.OtpListener;
+import android.widget.Toast;
+import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OtpListener {
-  private Button deleteButton, disableKeypadButton, enableKeypadButton;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,
+    OnOtpCompletionListener {
+  private Button validateButton;
   private OtpView otpView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -20,31 +21,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   }
 
   @Override public void onClick(View v) {
-    if (v == deleteButton) {
-      otpView.simulateDeletePress();
-    } else if (v == disableKeypadButton) {
-      otpView.disableKeypad();
-    } else if (v == enableKeypadButton) {
-      otpView.enableKeypad();
+    if (v.getId() == R.id.validate_button) {
+      Toast.makeText(this, otpView.getText(), Toast.LENGTH_SHORT).show();
     }
   }
 
-  @Override public void onOtpEntered(String otp) {
-    // do Stuff
-    Log.d("onOtpEntered=>", otp);
-  }
-
   private void initializeUi() {
-    deleteButton = findViewById(R.id.delete);
-    disableKeypadButton = findViewById(R.id.disable_keypad);
-    enableKeypadButton = findViewById(R.id.enable_keypad);
     otpView = findViewById(R.id.otp_view);
+    validateButton = findViewById(R.id.validate_button);
   }
 
   private void setListeners() {
-    enableKeypadButton.setOnClickListener(this);
-    disableKeypadButton.setOnClickListener(this);
-    deleteButton.setOnClickListener(this);
-    otpView.setListener(this);
+    validateButton.setOnClickListener(this);
+    otpView.setOtpCompletionListener(this);
+  }
+
+  @Override public void onOtpCompleted(String otp) {
+    // do Stuff
+    Toast.makeText(this, "OnOtpCompletionListener called", Toast.LENGTH_SHORT).show();
   }
 }
