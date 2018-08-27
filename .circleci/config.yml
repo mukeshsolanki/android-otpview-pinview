@@ -1,22 +1,19 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/code
     docker:
-    - image: circleci/openjdk:8-jdk
-    working_directory: ~/repo
+    - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
-      TERM: dumb
     steps:
     - checkout
     - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "build.gradle" }}
-        - v1-dependencies-
-    - run: gradle dependencies
-    - save_cache:
-        paths:
-        - ~/.gradle
-        key: v1-dependencies-{{ checksum "build.gradle" }}
-
-
+        key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+- run:
+    name: Download Dependencies
+    command: ./gradlew androidDependencies
+- save_cache:
+    paths:
+    - ~/.gradle
+    key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
