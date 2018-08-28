@@ -1,10 +1,9 @@
-<h1 align="center">Android PinView/ OtpView</h1>
+<h1 align="center">Android PinView/OtpView</h1>
 <p align="center">
   <a href="https://app.codacy.com/app/mukesh_2/android-otpview-pinview?utm_source=github.com&utm_medium=referral&utm_content=mukeshsolanki/android-otpview-pinview&utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/9251d0eef1d64538aa2599a26e6db8f8"></a>
   <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
   <a href="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master.svg?style=shield" /></a>
   <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
-  <a href="https://www.paypal.me/mukeshsolanki"> <img src="https://img.shields.io/badge/paypal-donate-yellow.svg" /></a>
   <br /><br />
     A custom control to enter a four digit code usually in cases of authentication.
 </p>
@@ -12,6 +11,15 @@
 <img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss1.png" width="270" height="480" /> &nbsp;&nbsp;
 <img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss2.png" width="270" height="480" /> &nbsp;&nbsp;
 <img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss3.png" width="270" height="480" /> &nbsp;&nbsp;
+
+# Supporting Android PinView/OtpView
+
+Android PinView/OtpView is an independent project with ongoing development and support made possible thanks to donations made by [these awesome backers](BACKERS.md#sponsors). If you'd like to join them, please consider:
+
+- [Become a backer or sponsor on Patreon](https://www.patreon.com/mukeshsolanki).
+- [One-time donation via PayPal](https://www.paypal.me/mukeshsolanki)
+
+<a href="https://www.patreon.com/bePatron?c=935498" alt="Become a Patron"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" /></a>
 
 ## How to integrate into your app?
 Integrating the project is simple a refined all you need to do is follow the below steps
