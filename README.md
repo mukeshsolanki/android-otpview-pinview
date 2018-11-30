@@ -60,7 +60,13 @@ Okay seems like you integrated the library in your project but **how do you use 
       />
 .....
 ```
-
+Add otpview style in the AppTheme
+```xml
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+  </style>
+```
 To get a callback when the user enters the otp make use of `OnOtpCompletionListener` like wise
 
 ```java
