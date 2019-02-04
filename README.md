@@ -99,6 +99,7 @@ That's pretty much it and your all wrapped up.
 | app:cursorWidth | sets width of the cursor |
 | app:itemBackground | sets the background color of each item in the otp view |
 | app:hideLineWhenFilled | toggles the line border |
+| app:rtlTextDirection | toggles RTL text direction |
 
 Apart from these you can use any property that applies to an `EditText`.
 
