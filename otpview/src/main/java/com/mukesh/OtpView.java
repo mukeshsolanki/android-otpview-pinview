@@ -88,6 +88,7 @@ public class OtpView extends AppCompatEditText {
   private int itemBackgroundResource;
   private Drawable itemBackground;
   private boolean hideLineWhenFilled;
+  private boolean rtlTextDirection;
   private OnOtpCompletionListener onOtpCompletionListener;
 
   public OtpView(Context context) {
@@ -125,6 +126,7 @@ public class OtpView extends AppCompatEditText {
         res.getDimensionPixelSize(R.dimen.otp_view_cursor_width));
     itemBackground = typedArray.getDrawable(R.styleable.OtpView_android_itemBackground);
     hideLineWhenFilled = typedArray.getBoolean(R.styleable.OtpView_hideLineWhenFilled, false);
+    rtlTextDirection = typedArray.getBoolean(R.styleable.OtpView_rtlTextDirection, false);
     typedArray.recycle();
     if (lineColor != null) {
       cursorLineColor = lineColor.getDefaultColor();
@@ -275,7 +277,12 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawOtpView(Canvas canvas) {
-    int nextItemToFill = getText().length();
+    int nextItemToFill
+    if (rtlTextDirection) {
+      nextItemToFill = otpViewItemCount - 1;
+    } else {
+      nextItemToFill = getText().length();
+    }
     for (int i = 0; i < otpViewItemCount; i++) {
       boolean itemSelected = isFocused() && nextItemToFill == i;
       boolean itemFilled = i < nextItemToFill;
@@ -306,14 +313,19 @@ public class OtpView extends AppCompatEditText {
       if (DBG) {
         drawAnchorLine(canvas);
       }
-      if (getText().length() > i) {
-        if (isPasswordInputType(getInputType())) {
-          drawCircle(canvas, i);
-        } else {
-          drawText(canvas, i);
+      if (rtlTextDirection) {
+        int reversedPosition = otpViewItemCount - i;
+        if (getText().length() >= reversedPosition) {
+          drawInput(canvas, i);
+        } else if (!TextUtils.isEmpty(getHint()) && getHint().length() == otpViewItemCount) {
+          drawHint(canvas, i);
         }
-      } else if (!TextUtils.isEmpty(getHint()) && getHint().length() == otpViewItemCount) {
-        drawHint(canvas, i);
+      } else {
+        if (getText().length() > i) {
+          drawInput(canvas, i);
+        } else if (!TextUtils.isEmpty(getHint()) && getHint().length() == otpViewItemCount) {
+          drawHint(canvas, i);
+        }
       }
     }
     if (isFocused() && getText().length() != otpViewItemCount && viewType == VIEW_TYPE_RECTANGLE) {
@@ -323,6 +335,14 @@ public class OtpView extends AppCompatEditText {
       updateOtpViewBoxPath(index);
       paint.setColor(getLineColorForState(SELECTED_STATE));
       drawOtpBox(canvas, index);
+    }
+  }
+
+  private void drawInput(Canvas canvas, int i) {
+    if (isPasswordInputType(getInputType())) {
+      drawCircle(canvas, i);
+    } else {
+      drawText(canvas, i);
     }
   }
 
@@ -477,13 +497,30 @@ public class OtpView extends AppCompatEditText {
 
   private void drawText(Canvas canvas, int i) {
     Paint paint = getPaintByIndex(i);
-    drawTextAtBox(canvas, paint, getText(), i);
+    paint.setColor(getCurrentTextColor());
+    if (rtlTextDirection) {
+      int reversedPosition = otpViewItemCount - i;
+      int reversedCharPosition = reversedPosition - getText().length();
+      if (reversedCharPosition <= 0) {
+        drawTextAtBox(canvas, paint, getText(), Math.abs(reversedCharPosition));
+      }
+    } else {
+      drawTextAtBox(canvas, paint, getText(), i);
+    }
   }
 
   private void drawHint(Canvas canvas, int i) {
     Paint paint = getPaintByIndex(i);
     paint.setColor(getCurrentHintTextColor());
-    drawTextAtBox(canvas, paint, getHint(), i);
+    if (rtlTextDirection) {
+      int reversedPosition = otpViewItemCount - i;
+      int reversedCharPosition = reversedPosition - getHint().length();
+      if (reversedCharPosition <= 0) {
+        drawTextAtBox(canvas, paint, getHint(), Math.abs(reversedCharPosition));
+      }
+    } else {
+      drawTextAtBox(canvas, paint, getHint(), i);
+    }
   }
 
   private void drawTextAtBox(Canvas canvas, Paint paint, CharSequence text, int charAt) {
@@ -499,7 +536,15 @@ public class OtpView extends AppCompatEditText {
     Paint paint = getPaintByIndex(i);
     float cx = itemCenterPoint.x;
     float cy = itemCenterPoint.y;
-    canvas.drawCircle(cx, cy, paint.getTextSize() / 2, paint);
+    if (rtlTextDirection) {
+      int reversedItemPosition = otpViewItemCount - i;
+      int reversedCharPosition = reversedItemPosition - getHint().length();
+      if (reversedCharPosition <= 0) {
+        canvas.drawCircle(cx, cy, paint.getTextSize() / 2, paint);
+      }
+    } else {
+      canvas.drawCircle(cx, cy, paint.getTextSize() / 2, paint);
+    }
   }
 
   private Paint getPaintByIndex(int i) {

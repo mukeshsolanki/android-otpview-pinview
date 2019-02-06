@@ -12,10 +12,10 @@ daysUntilClose: 7
 
 # Issues or Pull Requests with these labels will never be considered stale. Set to `[]` to disable
 exemptLabels:
-  - pinned
-  - security
-  - enchangements
-  - "[Status] Maybe Later"
+- pinned
+- security
+- enchangements
+- "[Status] Maybe Later"
 
 # Set to true to ignore issues in a project (defaults to false)
 exemptProjects: false
@@ -31,7 +31,6 @@ markComment: >
   This issue has been automatically marked as stale because it has not had
   recent activity. It will be closed if no further activity occurs. Thank you
   for your contributions.
-
 # Comment to post when removing the stale label.
 # unmarkComment: >
 #   Your comment here.
@@ -39,7 +38,6 @@ markComment: >
 # Comment to post when closing a stale Issue or Pull Request.
 closeComment: >
   This has been closed with no activity
-
 # Limit the number of actions per hour, from 1-30. Default is 30
 limitPerRun: 30
 
