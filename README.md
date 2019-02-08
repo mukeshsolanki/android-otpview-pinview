@@ -100,6 +100,7 @@ That's pretty much it and your all wrapped up.
 | app:itemBackground | sets the background color of each item in the otp view |
 | app:hideLineWhenFilled | toggles the line border |
 | app:rtlTextDirection | toggles RTL text direction |
+| app:state_filled | toggles the option fill the field after data has been entered (Style of file can we set with a drawable assigned using itemBackground |
 
 Apart from these you can use any property that applies to an `EditText`.
 

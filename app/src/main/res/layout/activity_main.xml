@@ -38,10 +38,11 @@
     android:inputType="number"
     android:itemBackground="@drawable/bg_otp_item"
     android:textColor="@android:color/white"
+    app:hideLineWhenFilled="true"
     app:itemCount="6"
     app:itemSpacing="6dp"
     app:lineColor="@color/otp_item_state"
-    app:hideLineWhenFilled="true"
+    app:state_filled="true"
     app:viewType="line" />
 
   <Button

@@ -277,7 +277,7 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawOtpView(Canvas canvas) {
-    int nextItemToFill
+    int nextItemToFill;
     if (rtlTextDirection) {
       nextItemToFill = otpViewItemCount - 1;
     } else {
