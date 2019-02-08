@@ -36,10 +36,12 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="72dp"
     android:inputType="number"
-    android:itemBackground="@color/colorPrimary"
+    android:itemBackground="@drawable/bg_otp_item"
     android:textColor="@android:color/white"
     app:itemCount="6"
-    app:lineColor="@color/colorPrimary"
+    app:itemSpacing="6dp"
+    app:lineColor="@color/otp_item_state"
+    app:hideLineWhenFilled="true"
     app:viewType="line" />
 
   <Button
