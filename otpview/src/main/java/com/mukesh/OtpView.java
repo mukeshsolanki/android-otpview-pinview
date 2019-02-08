@@ -53,8 +53,11 @@ public class OtpView extends AppCompatEditText {
   private static final int BLINK = 500;
   private static final int DEFAULT_COUNT = 4;
   private static final InputFilter[] NO_FILTERS = new InputFilter[0];
-  private static final int[] HIGHLIGHT_STATES = new int[] {
+  private static final int[] SELECTED_STATE = new int[]{
       android.R.attr.state_selected
+  };
+  private static final int[] FILLED_STATE = new int[]{
+      R.attr.state_filled
   };
   private static final int VIEW_TYPE_RECTANGLE = 0;
   private static final int VIEW_TYPE_LINE = 1;
@@ -274,15 +277,22 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawOtpView(Canvas canvas) {
-    int highlightIdx;
+    int nextItemToFill
     if (rtlTextDirection) {
-      highlightIdx = otpViewItemCount - 1;
+      nextItemToFill = otpViewItemCount - 1;
     } else {
-      highlightIdx = getText().length();
+      nextItemToFill = getText().length();
     }
     for (int i = 0; i < otpViewItemCount; i++) {
-      boolean highlight = isFocused() && highlightIdx == i;
-      paint.setColor(highlight ? getLineColorForState(HIGHLIGHT_STATES) : cursorLineColor);
+      boolean itemSelected = isFocused() && nextItemToFill == i;
+      boolean itemFilled = i < nextItemToFill;
+      int[] itemState = null;
+      if (itemFilled) {
+        itemState = FILLED_STATE;
+      } else if (itemSelected) {
+        itemState = SELECTED_STATE;
+      }
+      paint.setColor(itemState != null ? getLineColorForState(itemState) : cursorLineColor);
       updateItemRectF(i);
       updateCenterPoint();
       canvas.save();
@@ -290,9 +300,9 @@ public class OtpView extends AppCompatEditText {
         updateOtpViewBoxPath(i);
         canvas.clipPath(path);
       }
-      drawItemBackground(canvas, highlight);
+      drawItemBackground(canvas, itemState);
       canvas.restore();
-      if (highlight) {
+      if (itemSelected) {
         drawCursor(canvas);
       }
       if (viewType == VIEW_TYPE_RECTANGLE) {
@@ -323,7 +333,7 @@ public class OtpView extends AppCompatEditText {
       updateItemRectF(index);
       updateCenterPoint();
       updateOtpViewBoxPath(index);
-      paint.setColor(getLineColorForState(HIGHLIGHT_STATES));
+      paint.setColor(getLineColorForState(SELECTED_STATE));
       drawOtpBox(canvas, index);
     }
   }
@@ -341,7 +351,7 @@ public class OtpView extends AppCompatEditText {
         cursorLineColor) : cursorLineColor;
   }
 
-  private void drawItemBackground(Canvas canvas, boolean highlight) {
+  private void drawItemBackground(Canvas canvas, int[] backgroundState) {
     if (itemBackground == null) {
       return;
     }
@@ -351,7 +361,7 @@ public class OtpView extends AppCompatEditText {
     int right = Math.round(itemBorderRect.right + delta);
     int bottom = Math.round(itemBorderRect.bottom + delta);
     itemBackground.setBounds(left, top, right, bottom);
-    itemBackground.setState(highlight ? HIGHLIGHT_STATES : getDrawableState());
+    itemBackground.setState(backgroundState != null ? backgroundState : getDrawableState());
     itemBackground.draw(canvas);
   }
 

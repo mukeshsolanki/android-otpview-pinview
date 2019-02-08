@@ -38,6 +38,7 @@
     <attr format="reference|color" name="cursorColor"/>
     <attr name="android:itemBackground"/>
     <attr format="boolean" name="hideLineWhenFilled"/>
+    <attr format="boolean" name="state_filled"/>
     <attr format="boolean" name="rtlTextDirection"/>
   </declare-styleable>
 </resources>
