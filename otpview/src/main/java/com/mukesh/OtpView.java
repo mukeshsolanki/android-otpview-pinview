@@ -53,10 +53,10 @@ public class OtpView extends AppCompatEditText {
   private static final int BLINK = 500;
   private static final int DEFAULT_COUNT = 4;
   private static final InputFilter[] NO_FILTERS = new InputFilter[0];
-  private static final int[] SELECTED_STATE = new int[]{
+  private static final int[] SELECTED_STATE = new int[] {
       android.R.attr.state_selected
   };
-  private static final int[] FILLED_STATE = new int[]{
+  private static final int[] FILLED_STATE = new int[] {
       R.attr.state_filled
   };
   private static final int VIEW_TYPE_RECTANGLE = 0;
