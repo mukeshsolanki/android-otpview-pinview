@@ -148,7 +148,9 @@ public class OtpView extends AppCompatEditText {
   @Override
   public void setTypeface(Typeface tf) {
     super.setTypeface(tf);
-    animatorTextPaint.set(getPaint());
+    if (animatorTextPaint != null) {
+      animatorTextPaint.set(getPaint());
+    }
   }
 
   private void setMaxLength(int maxLength) {
@@ -564,7 +566,7 @@ public class OtpView extends AppCompatEditText {
   }
 
   private Paint getPaintByIndex(int i) {
-    if (getText()!=null && isAnimationEnable && i == getText().length() - 1) {
+    if (getText() != null && isAnimationEnable && i == getText().length() - 1) {
       animatorTextPaint.setColor(getPaint().getColor());
       return animatorTextPaint;
     } else {
