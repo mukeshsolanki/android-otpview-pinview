@@ -53,10 +53,10 @@ public class OtpView extends AppCompatEditText {
   private static final int BLINK = 500;
   private static final int DEFAULT_COUNT = 4;
   private static final InputFilter[] NO_FILTERS = new InputFilter[0];
-  private static final int[] SELECTED_STATE = new int[]{
+  private static final int[] SELECTED_STATE = new int[] {
       android.R.attr.state_selected
   };
-  private static final int[] FILLED_STATE = new int[]{
+  private static final int[] FILLED_STATE = new int[] {
       R.attr.state_filled
   };
   private static final int VIEW_TYPE_RECTANGLE = 0;
@@ -244,13 +244,15 @@ public class OtpView extends AppCompatEditText {
   @Override
   protected void onSelectionChanged(int selStart, int selEnd) {
     super.onSelectionChanged(selStart, selEnd);
-    if (selEnd != getText().length()) {
+    if (getText() != null && selEnd != getText().length()) {
       moveSelectionToEnd();
     }
   }
 
   private void moveSelectionToEnd() {
-    setSelection(getText().length());
+    if (getText() != null) {
+      setSelection(getText().length());
+    }
   }
 
   @Override
@@ -277,11 +279,15 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawOtpView(Canvas canvas) {
-    int nextItemToFill
+    int nextItemToFill;
     if (rtlTextDirection) {
       nextItemToFill = otpViewItemCount - 1;
     } else {
-      nextItemToFill = getText().length();
+      if (getText() != null) {
+        nextItemToFill = getText().length();
+      } else {
+        nextItemToFill = 0;
+      }
     }
     for (int i = 0; i < otpViewItemCount; i++) {
       boolean itemSelected = isFocused() && nextItemToFill == i;
@@ -328,7 +334,10 @@ public class OtpView extends AppCompatEditText {
         }
       }
     }
-    if (isFocused() && getText().length() != otpViewItemCount && viewType == VIEW_TYPE_RECTANGLE) {
+    if (isFocused()
+        && getText() != null
+        && getText().length() != otpViewItemCount
+        && viewType == VIEW_TYPE_RECTANGLE) {
       int index = getText().length();
       updateItemRectF(index);
       updateCenterPoint();
@@ -383,14 +392,14 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawOtpBox(Canvas canvas, int i) {
-    if (hideLineWhenFilled && i < getText().length()) {
+    if (getText() != null && hideLineWhenFilled && i < getText().length()) {
       return;
     }
     canvas.drawPath(path, paint);
   }
 
   private void drawOtpLine(Canvas canvas, int i) {
-    if (hideLineWhenFilled && i < getText().length()) {
+    if (getText() != null && hideLineWhenFilled && i < getText().length()) {
       return;
     }
     boolean drawLeft;
@@ -500,12 +509,21 @@ public class OtpView extends AppCompatEditText {
     paint.setColor(getCurrentTextColor());
     if (rtlTextDirection) {
       int reversedPosition = otpViewItemCount - i;
-      int reversedCharPosition = reversedPosition - getText().length();
+      int reversedCharPosition;
+      if (getText() == null) {
+        reversedCharPosition = reversedPosition;
+      } else {
+        reversedCharPosition = reversedPosition - getText().length();
+      }
       if (reversedCharPosition <= 0) {
-        drawTextAtBox(canvas, paint, getText(), Math.abs(reversedCharPosition));
+        if (getText() != null) {
+          drawTextAtBox(canvas, paint, getText(), Math.abs(reversedCharPosition));
+        }
       }
     } else {
-      drawTextAtBox(canvas, paint, getText(), i);
+      if (getText() != null) {
+        drawTextAtBox(canvas, paint, getText(), i);
+      }
     }
   }
 
@@ -548,7 +566,7 @@ public class OtpView extends AppCompatEditText {
   }
 
   private Paint getPaintByIndex(int i) {
-    if (isAnimationEnable && i == getText().length() - 1) {
+    if (getText() != null && isAnimationEnable && i == getText().length() - 1) {
       animatorTextPaint.setColor(getPaint().getColor());
       return animatorTextPaint;
     } else {
