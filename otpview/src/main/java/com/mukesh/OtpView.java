@@ -515,15 +515,11 @@ public class OtpView extends AppCompatEditText {
       } else {
         reversedCharPosition = reversedPosition - getText().length();
       }
-      if (reversedCharPosition <= 0) {
-        if (getText() != null) {
-          drawTextAtBox(canvas, paint, getText(), Math.abs(reversedCharPosition));
-        }
+      if (reversedCharPosition <= 0 && getText() != null) {
+        drawTextAtBox(canvas, paint, getText(), Math.abs(reversedCharPosition));
       }
-    } else {
-      if (getText() != null) {
-        drawTextAtBox(canvas, paint, getText(), i);
-      }
+    } else if (getText() != null) {
+      drawTextAtBox(canvas, paint, getText(), i);
     }
   }
 
