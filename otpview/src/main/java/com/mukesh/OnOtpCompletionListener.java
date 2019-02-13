@@ -16,6 +16,6 @@
 package com.mukesh;
 
 public interface OnOtpCompletionListener {
-  void onOtpCompleted(String otp);
+    void onOtpComplete(boolean completed, String otp);
 
 }
