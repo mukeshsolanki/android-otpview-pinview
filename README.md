@@ -4,7 +4,7 @@
   <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview/month.svg" /></a>
   <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
   <a href="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master.svg?style=shield" /></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
+  <a href="https://opensource.org/licenses/MIT"><a href="#backers" alt="sponsors on Open Collective"><img src="https://opencollective.com/android-otpview-pinview/backers/badge.svg" /></a> <a href="#sponsors" alt="Sponsors on Open Collective"><img src="https://opencollective.com/android-otpview-pinview/sponsors/badge.svg" /></a> <img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
   <br /><br />
     A custom control to enter a four digit code usually in cases of authentication.
 </p>
@@ -112,6 +112,36 @@ Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
 
 * Bug reports and pull requests are welcome.
 * Make sure you use [square/java-code-styles](https://github.com/square/java-code-styles) to format your code.
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/mukeshsolanki/android-otpview-pinview/graphs/contributors"><img src="https://opencollective.com/android-otpview-pinview/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/android-otpview-pinview#backer)]
+
+<a href="https://opencollective.com/android-otpview-pinview#backers" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/android-otpview-pinview#sponsor)]
+
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/0/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/1/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/2/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/3/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/4/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/5/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/6/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/7/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/8/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/android-otpview-pinview/sponsor/9/website" target="_blank"><img src="https://opencollective.com/android-otpview-pinview/sponsor/9/avatar.svg"></a>
+
+
 
 ## License
 ```
