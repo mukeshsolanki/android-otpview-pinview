@@ -128,7 +128,7 @@ public class OtpView extends AppCompatEditText {
     itemBackground = typedArray.getDrawable(R.styleable.OtpView_android_itemBackground);
     hideLineWhenFilled = typedArray.getBoolean(R.styleable.OtpView_hideLineWhenFilled, false);
     rtlTextDirection = typedArray.getBoolean(R.styleable.OtpView_rtlTextDirection, false);
-    maskingChar = typedArray.getString(R.styleable.OtpView_mask);
+    maskingChar = typedArray.getString(R.styleable.OtpView_maskingChar);
     typedArray.recycle();
     if (lineColor != null) {
       cursorLineColor = lineColor.getDefaultColor();
