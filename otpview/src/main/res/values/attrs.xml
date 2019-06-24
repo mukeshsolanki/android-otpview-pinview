@@ -40,5 +40,6 @@
     <attr format="boolean" name="hideLineWhenFilled"/>
     <attr format="boolean" name="state_filled"/>
     <attr format="boolean" name="rtlTextDirection"/>
+    <attr format="string" name="maskingChar"/>
   </declare-styleable>
 </resources>
