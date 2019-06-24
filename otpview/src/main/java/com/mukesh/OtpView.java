@@ -351,10 +351,9 @@ public class OtpView extends AppCompatEditText {
 
   private void drawInput(Canvas canvas, int i) {
     if (isPasswordInputType(getInputType())) {
-      if(maskingChar == null) {
+      if (maskingChar == null) {
         drawCircle(canvas, i);
-      }
-      else {
+      } else {
         drawMaskingText(canvas, i, Character.toString(maskingChar.charAt(0)));
       }
     } else {
@@ -542,7 +541,8 @@ public class OtpView extends AppCompatEditText {
         reversedCharPosition = reversedPosition - getText().length();
       }
       if (reversedCharPosition <= 0 && getText() != null) {
-        drawTextAtBox(canvas, paint, getText().toString().replaceAll(".", maskingChar), Math.abs(reversedCharPosition));
+        drawTextAtBox(canvas, paint, getText().toString().replaceAll(".", maskingChar),
+            Math.abs(reversedCharPosition));
       }
     } else if (getText() != null) {
       drawTextAtBox(canvas, paint, getText().toString().replaceAll(".", maskingChar), i);
