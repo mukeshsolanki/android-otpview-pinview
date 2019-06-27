@@ -350,12 +350,13 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawInput(Canvas canvas, int i) {
-    if (isPasswordInputType(getInputType())) {
-      if (maskingChar == null) {
-        drawCircle(canvas, i);
-      } else {
-        drawMaskingText(canvas, i, Character.toString(maskingChar.charAt(0)));
-      }
+    //allows masking for all number keyboard
+    if (maskingChar != null &&
+        (isNumberInputType(getInputType()) ||
+            isPasswordInputType(getInputType()))) {
+      drawMaskingText(canvas, i, Character.toString(maskingChar.charAt(0)));
+    } else if (isPasswordInputType(getInputType())) {
+      drawCircle(canvas, i);
     } else {
       drawText(canvas, i);
     }
@@ -642,6 +643,10 @@ public class OtpView extends AppCompatEditText {
         == (EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_VARIATION_WEB_PASSWORD)
         || variation
         == (EditorInfo.TYPE_CLASS_NUMBER | EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD);
+  }
+
+  private static boolean isNumberInputType(int inputType) {
+    return inputType == EditorInfo.TYPE_CLASS_NUMBER;
   }
 
   @Override
