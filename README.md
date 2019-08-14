@@ -73,7 +73,7 @@ To get a callback when the user enters the otp make use of `OnOtpCompletionListe
 ```java
  private OtpView otpView;
  otpView = findViewById(R.id.otp_view);
- otpView.setListener(new OnOtpCompletionListener() {
+ otpView.setOtpCompletionListener(new OnOtpCompletionListener() {
    @Override public void onOtpCompleted(String otp) {
 
      // do Stuff
