@@ -89,6 +89,7 @@ public class OtpView extends AppCompatEditText {
   private Drawable itemBackground;
   private boolean hideLineWhenFilled;
   private boolean rtlTextDirection;
+  private String maskingChar;
   private OnOtpCompletionListener onOtpCompletionListener;
 
   public OtpView(Context context) {
@@ -127,6 +128,7 @@ public class OtpView extends AppCompatEditText {
     itemBackground = typedArray.getDrawable(R.styleable.OtpView_android_itemBackground);
     hideLineWhenFilled = typedArray.getBoolean(R.styleable.OtpView_hideLineWhenFilled, false);
     rtlTextDirection = typedArray.getBoolean(R.styleable.OtpView_rtlTextDirection, false);
+    maskingChar = typedArray.getString(R.styleable.OtpView_maskingChar);
     typedArray.recycle();
     if (lineColor != null) {
       cursorLineColor = lineColor.getDefaultColor();
@@ -348,7 +350,12 @@ public class OtpView extends AppCompatEditText {
   }
 
   private void drawInput(Canvas canvas, int i) {
-    if (isPasswordInputType(getInputType())) {
+    //allows masking for all number keyboard
+    if (maskingChar != null &&
+        (isNumberInputType(getInputType()) ||
+            isPasswordInputType(getInputType()))) {
+      drawMaskingText(canvas, i, Character.toString(maskingChar.charAt(0)));
+    } else if (isPasswordInputType(getInputType())) {
       drawCircle(canvas, i);
     } else {
       drawText(canvas, i);
@@ -523,6 +530,26 @@ public class OtpView extends AppCompatEditText {
     }
   }
 
+  private void drawMaskingText(Canvas canvas, int i, String maskingChar) {
+    Paint paint = getPaintByIndex(i);
+    paint.setColor(getCurrentTextColor());
+    if (rtlTextDirection) {
+      int reversedPosition = otpViewItemCount - i;
+      int reversedCharPosition;
+      if (getText() == null) {
+        reversedCharPosition = reversedPosition;
+      } else {
+        reversedCharPosition = reversedPosition - getText().length();
+      }
+      if (reversedCharPosition <= 0 && getText() != null) {
+        drawTextAtBox(canvas, paint, getText().toString().replaceAll(".", maskingChar),
+            Math.abs(reversedCharPosition));
+      }
+    } else if (getText() != null) {
+      drawTextAtBox(canvas, paint, getText().toString().replaceAll(".", maskingChar), i);
+    }
+  }
+
   private void drawHint(Canvas canvas, int i) {
     Paint paint = getPaintByIndex(i);
     paint.setColor(getCurrentHintTextColor());
@@ -616,6 +643,10 @@ public class OtpView extends AppCompatEditText {
         == (EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_VARIATION_WEB_PASSWORD)
         || variation
         == (EditorInfo.TYPE_CLASS_NUMBER | EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD);
+  }
+
+  private static boolean isNumberInputType(int inputType) {
+    return inputType == EditorInfo.TYPE_CLASS_NUMBER;
   }
 
   @Override
@@ -926,6 +957,15 @@ public class OtpView extends AppCompatEditText {
    */
   public int getCursorColor() {
     return cursorColor;
+  }
+
+  public void setMaskingChar(String maskingChar) {
+    this.maskingChar = maskingChar;
+    requestLayout();
+  }
+
+  public String getMaskingChar() {
+    return maskingChar;
   }
 
   @Override
