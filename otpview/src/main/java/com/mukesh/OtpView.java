@@ -61,6 +61,7 @@ public class OtpView extends AppCompatEditText {
   };
   private static final int VIEW_TYPE_RECTANGLE = 0;
   private static final int VIEW_TYPE_LINE = 1;
+  private static final int VIEW_TYPE_NONE = 2;
   private int viewType;
   private int otpViewItemCount;
   private int otpViewItemWidth;
@@ -109,7 +110,7 @@ public class OtpView extends AppCompatEditText {
     final Resources.Theme theme = context.getTheme();
     TypedArray typedArray =
         theme.obtainStyledAttributes(attrs, R.styleable.OtpView, defStyleAttr, 0);
-    viewType = typedArray.getInt(R.styleable.OtpView_viewType, VIEW_TYPE_RECTANGLE);
+    viewType = typedArray.getInt(R.styleable.OtpView_viewType, VIEW_TYPE_NONE);
     otpViewItemCount = typedArray.getInt(R.styleable.OtpView_itemCount, DEFAULT_COUNT);
     otpViewItemHeight = (int) typedArray.getDimension(R.styleable.OtpView_itemHeight,
         res.getDimensionPixelSize(R.dimen.otp_view_item_size));
@@ -377,7 +378,9 @@ public class OtpView extends AppCompatEditText {
     int right = Math.round(itemBorderRect.right + delta);
     int bottom = Math.round(itemBorderRect.bottom + delta);
     itemBackground.setBounds(left, top, right, bottom);
-    itemBackground.setState(backgroundState != null ? backgroundState : getDrawableState());
+    if(viewType != VIEW_TYPE_NONE) {
+      itemBackground.setState(backgroundState != null ? backgroundState : getDrawableState());
+    }
     itemBackground.draw(canvas);
   }
 
