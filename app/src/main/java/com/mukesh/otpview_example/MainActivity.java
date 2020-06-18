@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import com.mukesh.OnOtpCompletionListener;
+
+import com.mukesh.OnOtpTextChangeListener;
 import com.mukesh.OtpView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,
-    OnOtpCompletionListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnOtpTextChangeListener {
   private Button validateButton;
   private OtpView otpView;
 
@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
   private void setListeners() {
     validateButton.setOnClickListener(this);
-    otpView.setOtpCompletionListener(this);
+    otpView.setOnOtpTextChangeListener(this);
   }
 
-  @Override public void onOtpCompleted(String otp) {
-    // do Stuff
-    Toast.makeText(this, "OnOtpCompletionListener called", Toast.LENGTH_SHORT).show();
+  @Override
+  public void onOtpTextChange(Character character, String otp) {
+    Toast.makeText(this, "OnOtpTextChangeListener called", Toast.LENGTH_SHORT).show();
   }
 }

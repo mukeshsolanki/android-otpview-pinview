@@ -91,7 +91,7 @@ public class OtpView extends AppCompatEditText {
   private boolean hideLineWhenFilled;
   private boolean rtlTextDirection;
   private String maskingChar;
-  private OnOtpCompletionListener onOtpCompletionListener;
+  private OnOtpTextChangeListener onOtpTextChangeListener;
 
   public OtpView(Context context) {
     this(context, null);
@@ -219,11 +219,12 @@ public class OtpView extends AppCompatEditText {
 
   @Override
   protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+    if (onOtpTextChangeListener != null) {
+      onOtpTextChangeListener.onOtpTextChange(lengthBefore < lengthAfter ? text.charAt(start) : null, text.toString());
+    }
+
     if (start != text.length()) {
       moveSelectionToEnd();
-    }
-    if (text.length() == otpViewItemCount && onOtpCompletionListener != null) {
-      onOtpCompletionListener.onOtpCompleted(text.toString());
     }
     makeBlink();
     if (isAnimationEnable) {
@@ -864,8 +865,8 @@ public class OtpView extends AppCompatEditText {
     updateCursorHeight();
   }
 
-  public void setOtpCompletionListener(OnOtpCompletionListener otpCompletionListener) {
-    this.onOtpCompletionListener = otpCompletionListener;
+  public void setOnOtpTextChangeListener(OnOtpTextChangeListener onOtpTextChangeListener){
+    this.onOtpTextChangeListener = onOtpTextChangeListener;
   }
 
   //region ItemBackground
