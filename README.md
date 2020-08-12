@@ -55,9 +55,9 @@ Okay seems like you integrated the library in your project but **how do you use 
       android:inputType="number"
       android:itemBackground="@color/colorPrimary"
       android:textColor="@android:color/white"
-      app:itemCount="6"
-      app:lineColor="@color/colorPrimary"
-      app:viewType="line"
+      app:OtpItemCount="6"
+      app:OtpLineColor="@color/colorPrimary"
+      app:OtpViewType="line"
       />
 .....
 ```
@@ -87,20 +87,20 @@ That's pretty much it and your all wrapped up.
 ## OtpView Attributes
 | Attribute | Use |
 | ----------| --- |
-| app:itemCount | sets the length of the otp view |
-| app:itemWidth | sets the with of each item inside the otp view |
-| app:itemHeight | sets the height of each item inside the otp view |
-| app:itemSpacing | sets the space between each item in otp view |
-| app:lineWidth | sets the line border width |
-| app:lineColor | sets the color to the line border |
-| app:viewType | sets the view type of the otp view it can be either `rectangle` `line` or `none` |
-| app:cursorVisible | sets the visibility of the cursor |
-| app:cursorColor | sets the color of the cursor |
-| app:cursorWidth | sets width of the cursor |
-| app:itemBackground | sets the background color of each item in the otp view |
-| app:hideLineWhenFilled | toggles the line border |
-| app:rtlTextDirection | toggles RTL text direction |
-| app:state_filled | toggles the option fill the field after data has been entered (Style of file can we set with a drawable assigned using itemBackground |
+| app:OtpItemCount | sets the length of the otp view |
+| app:OtpItemWidth | sets the with of each item inside the otp view |
+| app:OtpItemHeight | sets the height of each item inside the otp view |
+| app:OtpItemSpacing | sets the space between each item in otp view |
+| app:OtpLineWidth | sets the line border width |
+| app:OtpLineColor | sets the color to the line border |
+| app:OtpViewType | sets the view type of the otp view it can be either `rectangle` `line` or `none` |
+| app:OtpCursorVisible | sets the visibility of the cursor |
+| app:OtpCursorColor | sets the color of the cursor |
+| app:OtpCursorWidth | sets width of the cursor |
+| app:OtpItemBackground | sets the background color of each item in the otp view |
+| app:OtpHideLineWhenFilled | toggles the line border |
+| app:OtpRtlTextDirection | toggles RTL text direction |
+| app:OtpState_filled | toggles the option fill the field after data has been entered (Style of file can we set with a drawable assigned using itemBackground |
 
 Apart from these you can use any property that applies to an `EditText`.
 

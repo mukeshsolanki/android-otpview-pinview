@@ -38,12 +38,12 @@
     android:inputType="number"
     android:itemBackground="@drawable/bg_otp_item"
     android:textColor="@android:color/white"
-    app:hideLineWhenFilled="true"
-    app:itemCount="6"
-    app:itemSpacing="6dp"
-    app:lineColor="@color/otp_item_state"
-    app:state_filled="true"
-    app:viewType="line" />
+    app:OtpHideLineWhenFilled="true"
+    app:OtpItemCount="6"
+    app:OtpItemSpacing="6dp"
+    app:OtpLineColor="@color/otp_item_state"
+    app:OtpState_filled="true"
+    app:OtpViewType="line" />
 
   <Button
     android:id="@+id/validate_button"
