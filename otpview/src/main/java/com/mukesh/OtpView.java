@@ -139,7 +139,6 @@ public class OtpView extends AppCompatEditText {
     setMaxLength(otpViewItemCount);
     paint.setStrokeWidth(lineWidth);
     setupAnimator();
-    super.setCursorVisible(false);
     setTextIsSelectable(false);
   }
 
