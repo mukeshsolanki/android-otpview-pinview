@@ -3,7 +3,7 @@
   <a href="https://www.codacy.com/app/mukeshsolanki/android-otpview-pinview?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mukeshsolanki/android-otpview-pinview&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/ea98277d42924a09b5ae9daa5d10e424"/></a>
   <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview/month.svg" /></a>
   <a href="https://jitpack.io/#mukeshsolanki/android-otpview-pinview"> <img src="https://jitpack.io/v/mukeshsolanki/android-otpview-pinview.svg" /></a>
-  <a href="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/android-otpview-pinview/tree/master.svg?style=shield" /></a>
+  <a href="https://github.com/mukeshsolanki/android-otpview-pinview/actions"> <img src="https://github.com/mukeshsolanki/android-otpview-pinview/workflows/Build/badge.svg" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
   <br /><br />
     A custom control to enter a four digit code usually in cases of authentication.
