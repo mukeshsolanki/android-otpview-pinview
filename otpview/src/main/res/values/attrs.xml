@@ -34,6 +34,7 @@
       <enum name="none" value="2"/>
     </attr>
     <attr name="android:cursorVisible"/>
+    <attr name="android:textAllCaps"/>
     <attr format="dimension" name="OtpCursorWidth"/>
     <attr format="reference|color" name="OtpCursorColor"/>
     <attr name="android:itemBackground"/>

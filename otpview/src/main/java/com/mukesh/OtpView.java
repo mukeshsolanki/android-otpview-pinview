@@ -91,6 +91,7 @@ public class OtpView extends AppCompatEditText {
   private boolean hideLineWhenFilled;
   private boolean rtlTextDirection;
   private String maskingChar;
+  private boolean isAllCaps = false;
   private OnOtpCompletionListener onOtpCompletionListener;
 
   public OtpView(Context context) {
@@ -130,6 +131,7 @@ public class OtpView extends AppCompatEditText {
     hideLineWhenFilled = typedArray.getBoolean(R.styleable.OtpView_OtpHideLineWhenFilled, false);
     rtlTextDirection = typedArray.getBoolean(R.styleable.OtpView_OtpRtlTextDirection, false);
     maskingChar = typedArray.getString(R.styleable.OtpView_OtpMaskingChar);
+    isAllCaps = typedArray.getBoolean(R.styleable.OtpView_android_textAllCaps,false);
     typedArray.recycle();
     if (lineColor != null) {
       cursorLineColor = lineColor.getDefaultColor();
@@ -572,7 +574,11 @@ public class OtpView extends AppCompatEditText {
     float cy = itemCenterPoint.y;
     float x = cx - Math.abs((float) textRect.width()) / 2 - textRect.left;
     float y = cy + Math.abs((float) textRect.height()) / 2 - textRect.bottom;
-    canvas.drawText(text, charAt, charAt + 1, x, y, paint);
+    if(isAllCaps){
+      canvas.drawText(text.toString().toUpperCase(), charAt, charAt + 1, x, y, paint);
+    }else{
+      canvas.drawText(text, charAt, charAt + 1, x, y, paint);
+    }
   }
 
   private void drawCircle(Canvas canvas, int i) {
