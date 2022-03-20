@@ -1,25 +1,35 @@
-apply plugin: 'com.android.library'
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+}
 
 group = 'com.github.mukeshsolanki'
 
 android {
-  compileSdkVersion 30
+  compileSdk 32
 
   defaultConfig {
-    minSdkVersion 16
-    targetSdkVersion 30
-    versionCode 13
-    versionName "2.1.2"
+    minSdk 21
+    targetSdk 32
+    versionCode 14
+    versionName "3.0.0"
+    consumerProguardFiles "consumer-rules.pro"
   }
+
   buildTypes {
     release {
       minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
+  }
+  buildFeatures {
+    compose true
+  }
+  composeOptions {
+    kotlinCompilerExtensionVersion compose_version
   }
 }
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation 'androidx.appcompat:appcompat:1.2.0'
+  api "androidx.compose.material:material:$compose_version"
 }
