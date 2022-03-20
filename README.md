@@ -9,9 +9,9 @@
     A custom control to enter a code usually in cases of authentication.
 </p>
 
-<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss1.png" /> &nbsp;&nbsp;
-<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss2.png" /> &nbsp;&nbsp;
-<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/master/screenshots/ss3.png" /> &nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/main/screenshots/ss1.png"/> &nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/main/screenshots/ss2.png" /> &nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/mukeshsolanki/android-otpview-pinview/main/screenshots/ss3.png" /> &nbsp;&nbsp;
 
 # Supporting Compose OtpView/PinView
 
