@@ -73,7 +73,7 @@ Add a compose view in your xml file like
 Next in your code assign `otp_view` with the `OtpView` composable likewise.
 ```kotlin
 ....
-val otpView = findViewById(R.layout.otp_view)
+val otpView = findViewById(R.id.otp_view)
 otpView.composeView.apply {
     // Dispose of the Composition when the view's LifecycleOwner is destroyed
     setViewCompositionStrategy(DisposeOnViewTreeLifecycleDestroyed)
