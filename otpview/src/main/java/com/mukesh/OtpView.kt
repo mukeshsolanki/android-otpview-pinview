@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -11,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalTextInputService
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -30,14 +33,22 @@ fun OtpView(
     charBackground: Color = Color.Transparent,
     charSize: TextUnit = 16.sp,
     containerSize: Dp = charSize.value.dp * 2,
+    containerBorderColor: Color = MaterialTheme.colors.primary,
+    containerBorderSize: Dp = 2.dp,
     otpCount: Int = 4,
     type: Int = OTP_VIEW_TYPE_UNDERLINE,
     enabled: Boolean = true,
     password: Boolean = false,
     passwordChar: String = "",
-    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default.copy(
+        keyboardType = KeyboardType.NumberPassword,
+        imeAction = ImeAction.Done
+    ),
     onOtpTextChange: (String) -> Unit
 ) {
+
+    val currentKeyboard = LocalTextInputService.current
+
     BasicTextField(
         modifier = modifier,
         value = otpText,
@@ -48,6 +59,8 @@ fun OtpView(
         },
         enabled = enabled,
         keyboardOptions = keyboardOptions,
+        keyboardActions = KeyboardActions(onDone = { currentKeyboard?.hideSoftwareKeyboard() }),
+
         decorationBox = {
             Row(horizontalArrangement = Arrangement.SpaceAround) {
                 repeat(otpCount) { index ->
@@ -60,6 +73,8 @@ fun OtpView(
                         containerSize = containerSize,
                         type = type,
                         charBackground = charBackground,
+                        containerBorderSize = containerBorderSize,
+                        containerBorderColor = containerBorderColor,
                         password = password,
                         passwordChar = passwordChar,
                     )
@@ -77,17 +92,24 @@ private fun CharView(
     charColor: Color,
     charSize: TextUnit,
     containerSize: Dp,
+    containerBorderColor: Color = MaterialTheme.colors.primary,
+    containerFocusedBorderColor: Color = Color.Gray,
+    containerBorderSize: Dp = 2.dp,
     type: Int = OTP_VIEW_TYPE_UNDERLINE,
     charBackground: Color = Color.Transparent,
     password: Boolean = false,
     passwordChar: String = ""
 ) {
+
     val modifier = if (type == OTP_VIEW_TYPE_BORDER) {
         Modifier
             .size(containerSize)
             .border(
-                width = 1.dp,
-                color = charColor,
+                width = containerBorderSize,
+                color = when {
+                    index >= text.length -> containerFocusedBorderColor
+                    else -> containerBorderColor
+                },
                 shape = MaterialTheme.shapes.medium
             )
             .padding(bottom = 4.dp)
