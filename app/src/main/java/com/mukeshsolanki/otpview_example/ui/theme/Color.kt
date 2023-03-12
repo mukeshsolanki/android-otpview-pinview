@@ -1,4 +1,4 @@
-package com.mukesh.otpview_example.ui.theme
+package com.mukeshsolanki.otpview_example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -14,4 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Compose OTP View"
 include ':app'
+include ':otpview-compose'
 include ':otpview'

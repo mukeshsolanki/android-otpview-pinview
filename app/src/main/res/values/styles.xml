@@ -3,4 +3,9 @@
     <style name="Theme.ComposeOTPView" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
+
+    <style name="ViewSystemTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+    </style>
 </resources>
