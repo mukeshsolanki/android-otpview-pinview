@@ -32,9 +32,17 @@ allprojects {
 }
 ```
 Step 2. Add the dependency
+for Compose
 ```java
 dependencies {
-        implementation 'com.github.mukeshsolanki:android-otpview-pinview:3.0.0'
+        implementation 'com.github.mukeshsolanki:otpview-compose:3.1.0'
+}
+```
+
+for View system
+```java
+dependencies {
+        implementation 'com.github.mukeshsolanki:otpview:3.1.0'
 }
 ```
 
@@ -43,7 +51,6 @@ Okay seems like you integrated the library in your project but **how do you use 
 - Using Compose
 Just use the `OtpView` composable where you need to display the view like.
 ```kotlin
-....
 var otpValue by remember { mutableStateOf("") }
 OtpView(
     otpText = otpValue,
@@ -58,46 +65,36 @@ OtpView(
     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
     charColor = Color.White
 )
-....
 ```
 - Using Older View System (aka XML)
-Add a compose view in your xml file like
+Add the view in your xml file like
 ```xml
-.....
-<androidx.compose.ui.platform.ComposeView
+<com.mukeshsolanki.OtpView
     android:id="@+id/otp_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-.....
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="72dp"
+    android:inputType="text"
+    android:itemBackground="@drawable/bg_otp_item"
+    android:textAllCaps="true"
+    android:textColor="@android:color/white"
+    app:OtpHideLineWhenFilled="true"
+    app:OtpItemCount="6"
+    app:OtpItemSpacing="6dp"
+    app:OtpLineColor="@color/otp_item_state"
+    app:OtpState_filled="true"
+    app:OtpViewType="line"
+/>
 ```
-Next in your code assign `otp_view` with the `OtpView` composable likewise.
+Next in your code assign `otp_view` to a variable like
 ```kotlin
-....
 val otpView = findViewById(R.id.otp_view)
-otpView.composeView.apply {
-    // Dispose of the Composition when the view's LifecycleOwner is destroyed
-    setViewCompositionStrategy(DisposeOnViewTreeLifecycleDestroyed)
-    setContent {
-       // In Compose world
-       MaterialTheme {
-           var otpValue by remember { mutableStateOf("") }
-           OtpView(
-               otpText = otpValue,
-               onOtpTextChange = {
-                   otpValue = it
-                   Log.d("Actual Value", otpValue)
-               },
-               type = OTP_VIEW_TYPE_BORDER,
-               password = true,
-               containerSize = 48.dp,
-               passwordChar = "•",
-               keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-               charColor = Color.White
-           )
-       }
-    }
+```
+implement OnOtpCompletionListener
+```kotlin
+otpView.setOtpCompletionListener {
+    Log.d("Actual Value", it)
 }
-....
 ```
 That's pretty much it and your all wrapped up.
 
