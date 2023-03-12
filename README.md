@@ -35,14 +35,14 @@ Step 2. Add the dependency
 for Compose
 ```java
 dependencies {
-        implementation 'com.github.mukeshsolanki:otpview-compose:3.1.0'
+        implementation 'com.github.mukeshsolanki.android-otpview-pinview:otpview-compose:3.1.0'
 }
 ```
 
 for View system
 ```java
 dependencies {
-        implementation 'com.github.mukeshsolanki:otpview:3.1.0'
+        implementation 'com.github.mukeshsolanki.android-otpview-pinview:otpview:3.1.0'
 }
 ```
 
