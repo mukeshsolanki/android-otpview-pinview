@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -51,6 +52,7 @@ fun OtpView(
     password: Boolean = false,
     passwordChar: String = "",
     keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+    keyboardActions: KeyboardActions = KeyboardActions(),
     onOtpTextChange: (String) -> Unit
 ) {
     BasicTextField(
@@ -63,6 +65,7 @@ fun OtpView(
         },
         enabled = enabled,
         keyboardOptions = keyboardOptions,
+        keyboardActions = keyboardActions,
         decorationBox = {
             Row(horizontalArrangement = Arrangement.spacedBy(containerSpacing)) {
                 repeat(otpCount) { index ->
